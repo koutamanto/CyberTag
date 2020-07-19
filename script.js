@@ -302,13 +302,8 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
-      $.ajax({
-        type: "POST",
-        crossDomain: true,
-        dataType: 'json',
-        url: "https://cybertag2.herokuapp.com/index.php",
-        data: {"lat":lat ,"lng":lng}
-        })
+      var connection = new WebSocket('wss://cybertag2.herokuapp.com');
+      connection.send({"lat": lat,"lng": lng});
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
     },
