@@ -1,3 +1,7 @@
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 /**
  * Create google maps Map instance.
  * @param {number} lat
