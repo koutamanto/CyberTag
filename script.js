@@ -9,8 +9,6 @@ console.log('http server created on 8080');
 socketServer.listen(port, function(){
 console.log('listening on 8080');
 });
-Thanks in advance
-It looks like you want something similar to this:
 const port = 8080;
 let app = require('express')();
 let server = app.listen(port);
