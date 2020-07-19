@@ -271,7 +271,32 @@ const trackLocation = ({ onSuccess, onError = () => { } }) => {
     maximumAge: 0
   });
 };
-
+$.extend({
+	"put" : function (url, data, success, error) {
+		error = error || function() {}; 
+		return $.ajax({
+			"url" : url,
+			"data" : data,
+			"success" : success,
+			"type" : "PUT",
+			"cache" : false,
+			"error" : error,
+			"dataType" : "json"
+		});
+	},
+	"del" : function (url, data, success, error) { 
+		error = error || function() {};
+		return $.ajax({
+			"url" : url,
+			"data" : data,
+			"success" : success,
+			"type" : "DELETE",
+			"cache" : false,
+			"error" : error,
+			"dataType" : "json"
+		});
+	}
+});
 /**
  * Get position error message from the given error code.
  * @param {number} code
@@ -302,23 +327,13 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
-      $.ajax({
-        type: "POST",
-        url: "https://cybertag2.herokuapp.com",
-        data: {"lat":lat },
-            success: function(lat){
-            }
-        })
-   <!--lngの値をPHPへ渡す-->
-    $.ajax({
-        type: "POST",
-        url: "https://cybertag2.herokuapp.com",
-        data: {"lng":lng },
-            success: function(lng){
-            }
-        });
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
+      $.put("https://cybertag2.heroku.com/index.php", {lat : lat, lng : lng}, function(data, text_status) { 
+        alert(lat)
+        alert(lng)
+}, function(request, text_status, error_thrown) {
+});
     },
     onError: err => {
       console.log($info);
