@@ -304,7 +304,7 @@ function init() {
       map.panTo({ lat, lng });
       $.ajax({
         type: "POST",
-        url: "https://cybertag2.herokuapp.com/index.php",
+        url: "https://cybertag2.herokuapp.com",
         data: {"lat":lat },
             success: function(lat){
             }
@@ -312,7 +312,7 @@ function init() {
    <!--lngの値をPHPへ渡す-->
     $.ajax({
         type: "POST",
-        url: "https://cybertag2.herokuapp.com/index.php",
+        url: "https://cybertag2.herokuapp.com",
         data: {"lng":lng },
             success: function(lng){
             }
