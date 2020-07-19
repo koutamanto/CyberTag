@@ -292,7 +292,7 @@ const getPositionErrorMessage = code => {
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
 */
-var connection = new WebSocket('wss://cybertag2.herokuapp.com/index.html');
+
 function init() {
   const initialPosition = { lat: 59.32, lng: 17.84 };
   const map = createMap(initialPosition);
@@ -303,6 +303,7 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
+      var connection = new WebSocket('wss://cybertag2.herokuapp.com/index.html');
       connection.send({"lat": lat,"lng": lng});
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
