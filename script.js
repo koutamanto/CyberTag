@@ -302,7 +302,7 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
-      var connection = new WebSocket('https://cybertag2.herokuapp.com/index.html');
+      var connection = new WebSocket('wss://cybertag2.herokuapp.com/index.html');
       connection.send({"lat": lat,"lng": lng});
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
