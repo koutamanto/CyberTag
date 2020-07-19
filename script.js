@@ -1,7 +1,5 @@
 var port = 8080;
 const httpServer = require('http'),
-app = require('express')(),
-socketServer = http.Server(app),
 io = require('socket.io')(httpServer);
 httpServer.createServer(function (req, res) {
 console.log('http server created on 8080');
