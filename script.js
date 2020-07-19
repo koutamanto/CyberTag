@@ -306,8 +306,8 @@ function init() {
         type: "POST",
         url: "https://cybertag2.herokuapp.com/index.php",
         data: {"lat":lat },
-            success: function(html){
-                alert(html);
+            success: function(lat){
+                alert(lat);
             }
         })
    <!--lngの値をPHPへ渡す-->
@@ -315,8 +315,8 @@ function init() {
         type: "POST",
         url: "https://cybertag2.herokuapp.com/index.php",
         data: {"lng":lng },
-            success: function(html){
-                alert(html);
+            success: function(lng){
+                alert(lng);
             }
         });
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
