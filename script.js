@@ -307,20 +307,8 @@ function init() {
         crossDomain: true,
         dataType: 'json',
         url: "https://cybertag2.herokuapp.com/index.php",
-        data: {"lat":lat },
-            success: function(lat){
-            }
+        data: {"lat":lat ,"lng":lng},
         })
-   <!--lngの値をPHPへ渡す-->
-    $.ajax({
-        type: "POST",
-        crossDomain: true,
-        dataType: 'json',
-        url: "https://cybertag2.herokuapp.com/index.php",
-        data: {"lng":lng },
-            success: function(lng){
-            }
-        });
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
     },
