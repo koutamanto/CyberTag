@@ -302,6 +302,23 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
+      $.ajax({
+        type: "POST",
+        url: "https://cybertag2.herokuapp.com/index.php",
+        data: {"lat":lat },
+            success: function(html){
+                alert(html);
+            }
+        })
+   <!--lngの値をPHPへ渡す-->
+    $.ajax({
+        type: "POST",
+        url: "https://cybertag2.herokuapp.com/index.php",
+        data: {"lng":lng },
+            success: function(html){
+                alert(html);
+            }
+        });
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
     },
