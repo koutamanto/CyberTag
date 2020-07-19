@@ -1,4 +1,4 @@
-let port = 8080;
+var port = 8080;
 const httpServer = require('http'),
 app = require('express')(),
 socketServer = http.Server(app),
