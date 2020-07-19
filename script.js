@@ -307,7 +307,7 @@ function init() {
         crossDomain: true,
         dataType: 'json',
         url: "https://cybertag2.herokuapp.com/index.php",
-        data: {"lat":lat ,"lng":lng},
+        data: {"lat":lat ,"lng":lng}
         })
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
