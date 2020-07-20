@@ -1,28 +1,28 @@
-var app = express();
+var WebSocketServer = require("ws").Server
+var http = require("http")
+var express = require("express")
+var app = express()
+var port = process.env.PORT || 5000
 
-var server = http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.use(express.static(__dirname + "/"))
 
-var io=require('socket.io').listen(server);
-const cron = require('node-cron');
- 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
- 
-http.listen(3000, () => {
-  console.log('listening on *:3000');
-});
- 
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
-});
- 
-cron.schedule('*/5 * * * * *', () => {
-  console.log('send hello.');
-  io.emit('message', 'hello');
-});
+var server = http.createServer(app)
+server.listen(port)
+
+console.log("http server listening on %d", port)
+
+var wss = new WebSocketServer({server: server})
+console.log("websocket server created")
+
+wss.on("connection", function(ws) {
+  var id = setInterval(function() {
+    ws.send(JSON.stringify(new Date()), function() {  })
+  }, 1000)
+
+  console.log("websocket connection open")
+
+  ws.on("close", function() {
+    console.log("websocket connection close")
+    clearInterval(id)
+  })
+})
