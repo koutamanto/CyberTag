@@ -1,6 +1,10 @@
-const app = require('express')();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+var app = express();
+
+var server = http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
+var io=require('socket.io').listen(server);
 const cron = require('node-cron');
  
 app.get('/', (req, res) => {
