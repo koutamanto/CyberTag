@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "* Tutorial [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets) * Este código se corresponde con la sección: **Option 2: Socket.io** que muestra como usar websockets en Heroku utilizando el módulo [Socket.io](https://socket.io/) * Repo [heroku-examples/node-socket.io](https://github.com/heroku-examples/node-socket.io)",
   "engines": {
+<<<<<<< HEAD
     "node": "10.3"
   },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "node": "12.18.2"
+>>>>>>> 2b85a8b75ec65cb41a171e28b9b6985267f42538
   },
   "keywords": [
     "ULL",
