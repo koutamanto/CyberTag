@@ -2,7 +2,7 @@
   "name": "socket.io-client",
   "version": "2.3.0",
   "engines": {
-    "node": "12.16"
+    "node": "12.18.2"
   },
   "keywords": [
     "realtime",
