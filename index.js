@@ -6,7 +6,7 @@ var app = express();
 var http = require('http').Server(app);
 
 // Socket.ioを読み込み、サーバーと紐付け
-var io = require('socket.io')(http);
+const io = require('socket.io').listen(http);
 
 io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
