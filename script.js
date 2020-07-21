@@ -1,14 +1,3 @@
-io = require('socket.io')
-io.configure(function () { 
-  io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 10); 
-});
-/**
- * Create google maps Map instance.
- * @param {number} lat
- * @param {number} lng
- * @return {Object}
- */
 const createMap = ({ lat, lng }) => {
   return new google.maps.Map(document.getElementById('map'), {
     center: { lat, lng },
