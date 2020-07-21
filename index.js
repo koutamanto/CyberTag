@@ -8,7 +8,7 @@ var io = require('socket.io')(http);
 /* 以上追加 */
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index.html', { title: 'Express' });
 });
 
 /* 以下追加 */
