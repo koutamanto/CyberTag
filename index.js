@@ -4,7 +4,7 @@ var app = express();
 
 // サーバーを構築
 var http = require('http').Server(app);
-
+app.use(express.static(__dirname + '/'));
 // Socket.ioを読み込み、サーバーと紐付け
 const io = require('socket.io').listen(http);
 
