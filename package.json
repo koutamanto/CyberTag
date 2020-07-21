@@ -22,7 +22,6 @@
   "dependencies": {
     "express": "^4.16.4",
     "socket.io": "^0.9",
-    "require"
   },
   "devDependencies": {},
   "repository": {
