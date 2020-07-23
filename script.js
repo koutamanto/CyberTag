@@ -298,7 +298,7 @@ function init() {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
       const xhr = new XMLHttpRequest()
-      xhr.open('post', 'https://cybertagapi.herokuapp.com/addLocation')
+      xhr.open('post', 'https://cybertagapi.herokuapp.com:5000/addLocation')
       xhr.onload = () => {
         result.innerHTML = xhr.responseText
       };
