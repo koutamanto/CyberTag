@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
-    <body id="page-top">
+    <body>
         <!--Google map-->
         <main class="container">
             <div id="map" class="map"></div>
