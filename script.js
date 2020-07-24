@@ -300,7 +300,7 @@ function init() {
       console.log(lat)
       console.log(lng)
       const xhr = new XMLHttpRequest()
-      xhr.open('POST', 'https://cybertagapi.herokuapp.com:27349/addLocation')
+      xhr.open('POST', 'https://cybertagapi.herokuapp.com:47135/addLocation')
       xhr.send({"lat":lat,"lng":lng});
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
