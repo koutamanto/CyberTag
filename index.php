@@ -12,9 +12,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body>
-    <audio autoplay loop preload="auto">
-    <source src="bgm/happy.mp3">
-    </audio>
         <!--Google map-->
         <main class="container">
             <div id="map" class="map"></div>
