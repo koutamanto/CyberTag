@@ -297,6 +297,8 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
+      console.log(lat)
+      console.log(lng)
       const xhr = new XMLHttpRequest()
       xhr.open('POST', 'https://cybertagapi.herokuapp.com:27349/addLocation')
       xhr.send({"lat":lat,"lng":lng});
