@@ -25,5 +25,5 @@ def sendLocation():
 	print(lng)
 	return datas
 if __name__ == '__main__':
-	app.listen(os.getenv("PORT") || 5000)
+	app.listen(5000)
     app.run(host="0.0.0.0", port=5000)
