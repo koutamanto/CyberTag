@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import json, os
+from livereload import Server
 
 app = Flask(__name__)
 @app.route("/Nige")
@@ -29,4 +30,6 @@ def sendLocation():
 	with open('loc.json','w') as f:
 		json.dump(datas, f, indent=4)
 if __name__ == '__main__':
-	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+	live_server = Server(app.wsgi_app)
+	live_server.watch("**/*.*")
+	live_server.serve()
