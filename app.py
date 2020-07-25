@@ -10,7 +10,7 @@ def Oni():
 	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	return render_template("Oni/index.html",datas=datas)
+	return datas
 
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
