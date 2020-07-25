@@ -30,7 +30,10 @@ def sendLocation():
 	with open('loc.json','w') as f:
 		json.dump(datas, f, indent=4)
 if __name__ == '__main__':
+
 	live_server = Server(app.wsgi_app)
 	live_server.watch("**/*.*")
+	live_server.setHeader('Access-Control-Allow-Origin', '*')
+	live_server.setHeader('Access-Control-Allow-Methods', '*')
 	port = os.environ.get("PORT", 5000)
-	server.serve(port=port, host='0.0.0.0')
+	live_server.serve(port=port, host='0.0.0.0')
