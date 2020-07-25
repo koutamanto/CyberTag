@@ -334,6 +334,7 @@ var countup = function(){
 */
 function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
+  data = {"lat":11.111, "lng":11.111}
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
   setInterval(countup, 500);
