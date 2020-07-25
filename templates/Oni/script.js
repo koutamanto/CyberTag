@@ -286,6 +286,7 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
+  xhr.onload = function() {
   data = {{ datas|tojson}};
   console.log(data);
   var lats = data.lat;
@@ -304,6 +305,8 @@ var countup = function(){
   map.panTo({ lat, lng });
   $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
   $info.classList.remove('error');
+};
+
 
 }
 /**
