@@ -297,11 +297,12 @@ function init() {
     onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
       marker.setPosition({ lat, lng });
       map.panTo({ lat, lng });
-      console.log(lat)
-      console.log(lng)
+      console.log(lat);
+      console.log(lng);
+      var json_text = JSON.stringify([{"lat":lat,"lng":lng}]);
       const xhr = new XMLHttpRequest()
       xhr.open('POST', 'https://cybertagapi.herokuapp.com:5000/addLocation')
-      xhr.send({"lat":lat,"lng":lng});
+      xhr.send(json_text);
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
     },
