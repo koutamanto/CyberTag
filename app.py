@@ -7,10 +7,12 @@ def Nige():
 
 @app.route("/Oni")
 def Oni():
-	return render_template("Oni/index.html", datas=datas)
+	return render_template("Oni/index.html", datas=data)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	return render_template("Oni/index.html",datas=datas)
+    with open('loc.json','r') as f:
+        data = json.load(f)
+	return render_template("Oni/index.html",datas=data)
 
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
@@ -23,6 +25,7 @@ def sendLocation():
 	lng = datas["lng"]
 	print(lat)
 	print(lng)
-	return datas
+    with open('loc.json','w') as f:
+        json.dump(datas, f, indent=4)
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
