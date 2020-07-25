@@ -303,23 +303,30 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
-  data = {{ datas|tojson}};
-  console.log(data);
-  var lats = data.lat;
-  console.log(lats);
-  var lat = parseFloat(lats);
-  console.log(lat);
-  var lngs = data.lng;
-  console.log(lngs);
-  var lng = parseFloat(lngs);
-  console.log(lng);
-  const $info = document.getElementById('info');
-  marker.setMap(map); 
-  marker.setPosition({ lat, lng });
-  map.panTo({ lat, lng });
-  map.setZoom(map.getZoom());
-  $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-  $info.classList.remove('error');
+  if(data != {{datas|tojson}}){
+    data = {{ datas|tojson}};
+    console.log(data);
+    var lats = data.lat;
+    console.log(lats);
+    var lat = parseFloat(lats);
+    console.log(lat);
+    var lngs = data.lng;
+    console.log(lngs);
+    var lng = parseFloat(lngs);
+    console.log(lng);
+    const $info = document.getElementById('info');
+    marker.setMap(map); 
+    marker.setPosition({ lat, lng });
+    map.panTo({ lat, lng });
+    map.setZoom(map.getZoom());
+    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+    $info.classList.remove('error');
+    location.reload()
+  } else {
+
+  }
+
+  
 }
 /**
  * Initialize the application.
@@ -329,7 +336,7 @@ function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
-  setInterval(countup, 3000);
+  setInterval(countup, 500);
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
