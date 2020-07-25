@@ -303,14 +303,10 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
-  if(typeof data == "undefined"){
-    data = {"lat":11.111,"lng":11.111}
-    if(data!={{ datas|tojson}}){
+  let data = {"lat":11.111,"lng":11.111}
+  if(data != {{ datas|tojson }}){
       data = {{ datas|tojson}};
-      
-    };
-  else{
-    console.log(data);
+      console.log(data);
       var lats = data.lat;
       console.log(lats);
       var lat = parseFloat(lats);
@@ -327,12 +323,11 @@ var countup = function(){
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
       $info.classList.remove('error');
       location.reload()
-    };
-  };
+    }
+    else {
 
-
-  
-}
+    }
+  }
 /**
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
