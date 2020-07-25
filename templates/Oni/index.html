@@ -303,6 +303,7 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
+  let data = {"lat":11.111,"lng":11.111}
   if(data != {{datas|tojson}}){
     data = {{ datas|tojson}};
     console.log(data);
@@ -334,7 +335,6 @@ var countup = function(){
 */
 function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
-  data = {"lat":11.111, "lng":11.111}
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
   setInterval(countup, 500);
