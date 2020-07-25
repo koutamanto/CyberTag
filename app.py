@@ -32,7 +32,7 @@ def sendLocation():
 if __name__ == '__main__':
 
 	live_server = Server(app.wsgi_app)
-	live_server.watch("**/*.*")
+	live_server.watch("Oni/index.html")
 	live_server.setHeader('Access-Control-Allow-Origin', '*')
 	live_server.setHeader('Access-Control-Allow-Methods', '*')
 	port = os.environ.get("PORT", 5000)
