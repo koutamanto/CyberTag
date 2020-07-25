@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request
 import json, os
-from livereload import Server
-
 app = Flask(__name__)
 @app.route("/Nige")
 def Nige():
@@ -9,7 +7,7 @@ def Nige():
 
 @app.route("/Oni")
 def Oni():
-	return render_template("Oni/index.html", datas=datas)
+	return render_template("Oni/index.html", datas=data)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
 	with open('loc.json','r') as f:
@@ -30,10 +28,4 @@ def sendLocation():
 	with open('loc.json','w') as f:
 		json.dump(datas, f, indent=4)
 if __name__ == '__main__':
-
-	live_server = Server(app.wsgi_app)
-	live_server.watch("Oni/index.html")
-	live_server.setHeader('Access-Control-Allow-Origin', '*')
-	live_server.setHeader('Access-Control-Allow-Methods', '*')
-	port = os.environ.get("PORT", 5000)
-	live_server.serve(port=port, host='0.0.0.0')
+	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
