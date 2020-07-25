@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import json, os
 app = Flask(__name__)
 @app.route("/Nige")
@@ -10,7 +10,7 @@ def Oni():
 	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	return datas
+	return jsonify(datas)
 
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
