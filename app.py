@@ -32,4 +32,4 @@ def sendLocation():
 if __name__ == '__main__':
 	live_server = Server(app.wsgi_app)
 	live_server.watch("**/*.*")
-	live_server.serve()
+server.serve(port=5000, host='0.0.0.0')
