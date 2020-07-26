@@ -319,7 +319,7 @@ var countup = function(){
     map = createMap(initialPosition);
     marker = createMarker({ map, position: initialPosition });
   }
-  if(!markerex){
+  if(typeof markerex == "undefined"){
     markerex = "Yes";
     marker.setMap(map); 
     marker.setPosition({ lat, lng });
@@ -327,7 +327,7 @@ var countup = function(){
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
     $info.classList.remove('error');
   }
-  if(markerex){
+  if(typeof markerex != "undefined"){
     marker.setMap(null)
     marker.setMap(map); 
     marker.setPosition({ lat, lng });
