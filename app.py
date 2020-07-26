@@ -10,8 +10,6 @@ def Oni():
 	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	with open('loc.txt','r') as f:
-		datas = f.read()
 	return render_template("Oni/index.html",datas=datas)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
