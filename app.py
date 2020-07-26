@@ -8,10 +8,10 @@ def Nige():
     return render_template("Nige/index.html")
 @app.route("/Oni")
 def Oni():
-with open('loc.json','r') as f:
-    json_txt = f.read()
-    json_txt = str(json_txt).replace("'", '"').replace('True', 'true').replace('False', 'false')
-    dt = json.loads(json_txt)
+    with open('loc.json','r') as f:
+        json_txt = f.read()
+        json_txt = str(json_txt).replace("'", '"').replace('True', 'true').replace('False', 'false')
+        dt = json.loads(json_txt)
     return render_template("Oni/index.html", datas=dt)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
