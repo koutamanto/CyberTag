@@ -275,34 +275,32 @@ const getPositionErrorMessage = code => {
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
 */
-
+function onSuccess(pos){
+  crd = pos.coords;
+  lat = crd.latitude;
+  lng = crd.longitude;
+  marker.setPosition({ lat, lng });
+  map.panTo({ lat, lng });
+  console.log(lat);
+  console.log(lng);
+  var json_text = JSON.stringify({"lat":lat,"lng":lng});
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/sendLocation');
+  xhr.send(json_text);
+  $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+  $info.classList.remove('error');
+  }
+function onError(err) {
+  console.log(err.message)
+}
 function init() {
   const initialPosition = { lat: 59.32, lng: 17.84 };
   const map = createMap(initialPosition);
   const marker = createMarker({ map, position: initialPosition });
   const $info = document.getElementById('info');
-  function onSuccess(pos){
-    crd = pos.coords;
-    lat = crd.latitude;
-    lng = crd.longitude;
-    marker.setPosition({ lat, lng });
-    map.panTo({ lat, lng });
-    console.log(lat);
-    console.log(lng);
-    var json_text = JSON.stringify({"lat":lat,"lng":lng});
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/sendLocation');
-    xhr.send(json_text);
-    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-    $info.classList.remove('error');
-    }
-  function onError(err) {
-    console.log(err.message)
-  }
-  setInterval(  navigator.geolocation.watchPosition(onSuccess, onError, {
+  navigator.geolocation.watchPosition(onSuccess, onError, {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
-  }),500)
-
+  });
 };
