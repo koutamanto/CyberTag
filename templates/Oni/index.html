@@ -327,7 +327,9 @@ function init() {
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
   marker.setMap(map);
+  window.addEventListener("load",function() {
     setInterval(main, 1000);
+}
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
