@@ -314,6 +314,9 @@ var countup = function(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
+  initialPosition = { lat: "11.111", lng: "11.111" };
+  map = createMap(initialPosition);
+  marker = createMarker({ map, position: initialPosition });
   marker.setMap(map); 
   marker.setPosition({ lat, lng });
   map.panTo({ lat, lng });
@@ -325,9 +328,6 @@ var countup = function(){
  * Automatically called by the google maps API once it's loaded.
 */
 function init() {
-  initialPosition = { lat: "11.111", lng: "11.111" };
-  map = createMap(initialPosition);
-  marker = createMarker({ map, position: initialPosition });
   setInterval(countup, 3000);
 };
           </script>
