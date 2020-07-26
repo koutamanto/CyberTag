@@ -13,7 +13,7 @@ def Oni():
 	return render_template("Oni/index.html", datas=dt)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	with open('loc.txt','r') as f:
+	with open('loc.json','r') as f:
 		dt = json.load(f)
 	return render_template("Oni/index.html",datas=dt)
 @app.route("/sendLocation", methods=["POST"])
