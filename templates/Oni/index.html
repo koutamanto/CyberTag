@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="static/css/styles2.css">
     </head>
     <body id="page-top">
+        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="jquery-ajax.js?ver=1.0"></script>
         <!--Google map-->
         <main class="container">
             <div id="map" class="map"></div>
@@ -298,26 +300,44 @@ const getPositionErrorMessage = code => {
       return 'Timeout reached.';
   }
 }
-//Next:setTitleで逃走者のコードネームをマーカーに表示する
-var countup = function(){
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET','/getLocation');
-  xhr.send();
-  data = {{ datas|tojson}};
-  console.log(data);
-  var lats = data.lat;
-  var lat = parseFloat(lats);
-  console.log(lat);
-  var lngs = data.lng;
-  var lng = parseFloat(lngs);
-  console.log(lng);
-  const $info = document.getElementById('info');
-  marker.setPosition({ lat, lng });
-  map.panTo({ lat, lng });
-  $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-  $info.classList.remove('error');
-  location.href = "Oni"
+function dojQueryAjax() {
+ 
+    // jQueryのajaxメソッドを使用しajax通信
+    $.ajax({
+        type: "GET", // GETメソッドで通信
+ 
+        url: "Oni", // 取得先のURL
+ 
+        cache: false, // キャッシュしないで読み込み
+ 
+        // 通信成功時に呼び出されるコールバック
+        success: function (data) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET','/getLocation');
+            xhr.send();
+            data = {{ datas|tojson}};
+            console.log(data);
+            var lats = data.lat;
+            var lat = parseFloat(lats);
+            console.log(lat);
+            var lngs = data.lng;
+            var lng = parseFloat(lngs);
+            console.log(lng);
+            const $info = document.getElementById('info');
+            marker.setPosition({ lat, lng });
+            map.panTo({ lat, lng });
+            $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+            $info.classList.remove('error');
+        },
+        // 通信エラー時に呼び出されるコールバック
+        error: function () {
+            alert("Ajax通信エラー");
+        }
+    });
+ 
 }
+  
+//Next:setTitleで逃走者のコードネームをマーカーに表示する
 /**
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
@@ -327,7 +347,7 @@ function init() {
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
   marker.setMap(map); 
-  setInterval(countup, 500);
+  setTimeout(dojQueryAjax, 1000);
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
