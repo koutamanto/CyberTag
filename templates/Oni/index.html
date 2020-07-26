@@ -300,16 +300,6 @@ const getPositionErrorMessage = code => {
 }
 
 var countup = function(){
-
-}
-/**
- * Initialize the application.
- * Automatically called by the google maps API once it's loaded.
-*/
-function init() {
-  initialPosition = { lat: "11.111", lng: "11.111" };
-  map = createMap(initialPosition);
-  marker = createMarker({ map, position: initialPosition });
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
@@ -324,12 +314,36 @@ function init() {
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  marker.setMap(map); 
-  marker.setPosition({ lat, lng });
-  map.panTo({ lat, lng });
-  $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-  $info.classList.remove('error');
-  
+  if(!map){
+      initialPosition = { lat: "11.111", lng: "11.111" };
+    map = createMap(initialPosition);
+    marker = createMarker({ map, position: initialPosition });
+  }
+  if(!markerex){
+    markerex = "Yes";
+    marker.setMap(map); 
+    marker.setPosition({ lat, lng });
+    map.panTo({ lat, lng });
+    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+    $info.classList.remove('error');
+  }
+  if(markerex){
+    marker.setMap(null)
+    marker.setMap(map); 
+    marker.setPosition({ lat, lng });
+    map.panTo({ lat, lng });
+  }
+
+
+
+}
+/**
+ * Initialize the application.
+ * Automatically called by the google maps API once it's loaded.
+*/
+function init() {
+
+  setInterval(countup, 3000);
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
