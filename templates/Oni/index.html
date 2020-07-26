@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>KJUNKIE - Zero</title>
+        <title>【鬼】 Tag It ~サイバー鬼ごっこ~</title>
         <link rel="stylesheet" href="static/css/styles2.css">
     </head>
     <body id="page-top">
@@ -314,28 +314,15 @@ var countup = function(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  if(!map){
-      initialPosition = { lat: "11.111", lng: "11.111" };
-    map = createMap(initialPosition);
-    marker = createMarker({ map, position: initialPosition });
-  }
-  if(typeof markerex == "undefined"){
-    markerex = "Yes";
-    marker.setMap(map); 
-    marker.setPosition({ lat, lng });
-    map.panTo({ lat, lng });
-    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-    $info.classList.remove('error');
-  }
-  if(typeof markerex != "undefined"){
-    marker.setMap(null)
-    marker.setMap(map); 
-    marker.setPosition({ lat, lng });
-    map.panTo({ lat, lng });
-  }
-
-
-
+  initialPosition = { lat: "11.111", lng: "11.111" };
+  map = createMap(initialPosition);
+  marker = createMarker({ map, position: initialPosition });
+  markerex = 11
+  marker.setMap(map); 
+  marker.setPosition({ lat, lng });
+  map.panTo({ lat, lng });
+  $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+  $info.classList.remove('error');
 }
 /**
  * Initialize the application.
