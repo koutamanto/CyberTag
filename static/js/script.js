@@ -254,17 +254,6 @@ const createMarker = ({ map, position }) => {
  * @param {Object} [onError]
  * @return {number}
  */
-const trackLocation = ({ onSuccess, onError = () => { } }) => {
-  if ('geolocation' in navigator === false) {
-    return onError(new Error('Geolocation is not supported by your browser.'));
-  }
-
-  return navigator.geolocation.watchPosition(onSuccess, onError, {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  });
-};
 
 /**
  * Get position error message from the given error code.
@@ -292,24 +281,29 @@ function init() {
   const map = createMap(initialPosition);
   const marker = createMarker({ map, position: initialPosition });
   const $info = document.getElementById('info');
-
-  let watchId = trackLocation({
-    onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
-      marker.setPosition({ lat, lng });
-      map.panTo({ lat, lng });
-      console.log(lat);
-      console.log(lng);
-      var json_text = JSON.stringify({"lat":lat,"lng":lng});
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/sendLocation');
-      xhr.send(json_text);
-      $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-      $info.classList.remove('error');
-    },
-    onError: err => {
-      console.log($info);
-      $info.textContent = `Error: ${err.message || getPositionErrorMessage(err.code)}`;
-      $info.classList.add('error');
+  function onSuccess(pos){
+    crd = pos.coords;
+    lat = crd.latitude;
+    lng = crd.longitude;
+    marker.setPosition({ lat, lng });
+    map.panTo({ lat, lng });
+    console.log(lat);
+    console.log(lng);
+    var json_text = JSON.stringify({"lat":lat,"lng":lng});
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/sendLocation');
+    xhr.send(json_text);
+    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+    $info.classList.remove('error');
     }
+  function onError(err) {
+    console.log(err.message)
+  }
+  navigator.geolocation.watchPosition(onSuccess, onError, {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  });
+
   });
 }
