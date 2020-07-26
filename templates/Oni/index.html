@@ -303,7 +303,6 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
-  location.href = "#"
   data = {{ datas|tojson}};
   console.log(data);
   var lats = data.lat;
@@ -317,6 +316,7 @@ var countup = function(){
   map.panTo({ lat, lng });
   $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
   $info.classList.remove('error');
+  location.href = "Oni"
 }
 /**
  * Initialize the application.
