@@ -7,8 +7,8 @@ def Nige():
 
 @app.route("/Oni")
 def Oni():
-	with open('loc.txt','r') as f:
-		dt = f.read()
+	with open('loc.json','r') as f:
+		dt = json.load(f)
 	return render_template("Oni/index.html", datas=dt)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
@@ -26,8 +26,8 @@ def sendLocation():
 	lng = datas["lng"]
 	print(lat)
 	print(lng)
-	with open('loc.txt','w') as f:
-		f.write(str(datas))
+	with open('loc.json','w') as f:
+		json.dump(f)
 	return jsonify(datas)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
