@@ -7,10 +7,14 @@ def Nige():
 
 @app.route("/Oni")
 def Oni():
-	return render_template("Oni/index.html", datas=datas)
+	with open('loc.txt','r') as f:
+		dt = f.read()
+	return render_template("Oni/index.html", datas=dt)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	return render_template("Oni/index.html",datas=datas)
+	with open('loc.txt','r') as f:
+		dt = f.read()
+	return render_template("Oni/index.html",datas=dt)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
 	global datas
