@@ -306,7 +306,7 @@ function dojQueryAjax() {
     $.ajax({
         type: "GET", // GETメソッドで通信
  
-        url: "Oni", // 取得先のURL
+        url: "getLocation", // 取得先のURL
  
         cache: false, // キャッシュしないで読み込み
  
@@ -348,9 +348,7 @@ function init() {
   marker = createMarker({ map, position: initialPosition });
   marker.setMap(map);
   window.addEventListener('load', function () {
- 
     setTimeout(dojQueryAjax, 1000);
- 
 });
 };
           </script>
