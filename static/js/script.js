@@ -275,7 +275,7 @@ const getPositionErrorMessage = code => {
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
 */
-function onSuccess(pos){
+function onSuccess(pos, marker, map){
   crd = pos.coords;
   lat = crd.latitude;
   lng = crd.longitude;
@@ -298,7 +298,7 @@ function init() {
   const map = createMap(initialPosition);
   const marker = createMarker({ map, position: initialPosition });
   const $info = document.getElementById('info');
-  navigator.geolocation.watchPosition(onSuccess, onError, {
+  navigator.geolocation.watchPosition(onSuccess(marker, map), onError, {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
