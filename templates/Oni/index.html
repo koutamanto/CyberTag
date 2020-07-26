@@ -303,6 +303,7 @@ var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
+  location.href = "#"
   data = {{ datas|tojson}};
   console.log(data);
   var lats = data.lat;
