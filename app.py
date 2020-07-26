@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import json, os
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 @app.route("/Nige")
 def Nige():
 	return render_template("Nige/index.html")
-
+@app.after
 @app.route("/Oni")
 def Oni():
 	with open('loc.json','r') as f:
