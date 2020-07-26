@@ -19,7 +19,7 @@
           <script type="text/javascript">
             const createMap = ({ lat, lng }) => {
   return new google.maps.Map(document.getElementById('map'), {
-    center: { lat, lng },
+    center:  new google.maps.LatLng( lat, lng ) ,,
     zoom: 18,
     styles: [
       {
@@ -264,7 +264,7 @@
  * @return {Object}
  */
 const createMarker = ({ map, position }) => {
-  return new google.maps.Marker({ map, position });
+  return new google.maps.Marker({ map, position, icon:"https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/14562066631553229589-512.png"});
 };
 
 /**
