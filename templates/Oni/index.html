@@ -306,7 +306,7 @@ function dojQueryAjax() {
     $.ajax({
         type: "GET", // GETメソッドで通信
  
-        url: "getLocation", // 取得先のURL
+        url: "Oni", // 取得先のURL
  
         cache: false, // キャッシュしないで読み込み
  
@@ -324,6 +324,7 @@ function dojQueryAjax() {
             var lng = parseFloat(lngs);
             console.log(lng);
             const $info = document.getElementById('info');
+
             marker.setPosition({ lat, lng });
             map.panTo({ lat, lng });
             $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
