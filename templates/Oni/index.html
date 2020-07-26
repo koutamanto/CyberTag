@@ -254,27 +254,7 @@
     ]
   });
 };
-function ajaxUpdate(url, element) {
- 
-    // urlを加工し、キャッシュされないurlにする。
-    url = url + '?ver=' + new Date().getTime();
- 
-    // ajaxオブジェクト生成
-    var ajax = new XMLHttpRequest;
- 
-    // ajax通信open
-    ajax.open('GET', url, true);
- 
-    // ajax返信時の処理
-    ajax.onload = function () {
- 
-        // ajax返信から得たHTMLでDOM要素を更新
-        element.innerHTML = ajax.responseText;
-    };
- 
-    // ajax開始
-    ajax.send(null);
-}
+
 /**
  * Create google maps Marker instance.
  * @param {Object} map
@@ -339,12 +319,6 @@ var countup = function(){
   map.panTo({ lat, lng });
   $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
   $info.classList.remove('error');
- 
-    var url = "Oni";
- 
-    var div = document.getElementById('info');
-
-    ajaxUpdate(url, div);
 }
 /**
  * Initialize the application.
