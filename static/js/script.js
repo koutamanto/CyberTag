@@ -299,9 +299,10 @@ function init() {
   function onError(err) {
     console.log(err.message)
   }
-  navigator.geolocation.watchPosition(onSuccess, onError, {
+  setInterval(  navigator.geolocation.watchPosition(onSuccess, onError, {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
-  });
+  }),500)
+
 };
