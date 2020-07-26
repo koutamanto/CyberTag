@@ -6,7 +6,6 @@ CORS(app)
 @app.route("/Nige")
 def Nige():
 	return render_template("Nige/index.html")
-@app.after
 @app.route("/Oni")
 def Oni():
 	with open('loc.json','r') as f:
