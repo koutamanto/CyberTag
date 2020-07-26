@@ -298,7 +298,7 @@ const getPositionErrorMessage = code => {
       return 'Timeout reached.';
   }
 }
-
+//Next:setTitleで逃走者のコードネームをマーカーに表示する
 var countup = function(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
@@ -314,8 +314,6 @@ var countup = function(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-
-  marker.setMap(map); 
   marker.setPosition({ lat, lng });
   map.panTo({ lat, lng });
   $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
@@ -329,6 +327,7 @@ function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
+  marker.setMap(map); 
   setInterval(countup, 3000);
 };
           </script>
