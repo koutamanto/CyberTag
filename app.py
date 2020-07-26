@@ -9,7 +9,7 @@ def Nige():
 def Oni():
 	with open('loc.txt','r') as f:
 		datas = f.read()
-	return render_template("Oni/index.html", datas=datas)
+	return render_template("Oni/index.html", datas=str(datas))
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
 	with open('loc.txt','r') as f:
