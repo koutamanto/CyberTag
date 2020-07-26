@@ -299,57 +299,37 @@ const getPositionErrorMessage = code => {
       return 'Timeout reached.';
   }
 }
-function dojQueryAjax() {
- 
-    // jQueryのajaxメソッドを使用しajax通信
-    $.ajax({
-        type: "GET", // GETメソッドで通信
- 
-        url: "Oni", // 取得先のURL
- 
-        cache: false, // キャッシュしないで読み込み
- 
-        // 通信成功時に呼び出されるコールバック
-        success: function (data) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET','/getLocation');
-            xhr.send();
-            data = {{ datas|tojson}};
-            console.log(data);
-            var lats = data.lat;
-            var lat = parseFloat(lats);
-            console.log(lat);
-            var lngs = data.lng;
-            var lng = parseFloat(lngs);
-            console.log(lng);
-            const $info = document.getElementById('info');
+function main(){
+var xhr = new XMLHttpRequest();
+xhr.open('GET','/getLocation');
+xhr.send();
+data = {{ datas|tojson}};
+console.log(data);
+var lats = data.lat;
+var lat = parseFloat(lats);
+console.log(lat);
+var lngs = data.lng;
+var lng = parseFloat(lngs);
+console.log(lng);
+const $info = document.getElementById('info');
 
-            marker.setPosition({ lat, lng });
-            map.panTo({ lat, lng });
-            $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
-            $info.classList.remove('error');
-        },
-        // 通信エラー時に呼び出されるコールバック
-        error: function () {
-            alert("Ajax通信エラー");
-        }
-    });
- 
-}
-  
+marker.setPosition({ lat, lng });
+map.panTo({ lat, lng });
+$info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
+$info.classList.remove('error');
+window.location = document.URL
 //Next:setTitleで逃走者のコードネームをマーカーに表示する
 /**
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
 */
+}
 function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
   map = createMap(initialPosition);
   marker = createMarker({ map, position: initialPosition });
   marker.setMap(map);
-  window.addEventListener('load', function () {
-    setTimeout(dojQueryAjax, 1000);
-});
+    setTimeout(main, 1000);
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
