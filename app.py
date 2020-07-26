@@ -12,7 +12,7 @@ def Oni():
 def getLocation():
 	with open('loc.txt','r') as f:
 		datas = f.read()
-	return render_template("Oni/index.html",datas=datas)
+	return render_template("Oni/index.html",datas=dict(datas))
 
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
@@ -26,7 +26,7 @@ def sendLocation():
 	print(lat)
 	print(lng)
 	with open('loc.txt','w') as f:
-		f.write(datas)
+		f.write(str(datas))
 	return jsonify(datas)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
