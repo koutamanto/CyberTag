@@ -292,7 +292,7 @@ function init() {
     cnamec = document.cookie;
     cnamed = cnamec.split('=');
     cname = cnamed[1]
-    var json_text = JSON.stringify({"cname":cmname,"lat":lat,"lng":lng});
+    var json_text = JSON.stringify({"cname":cname,"lat":lat,"lng":lng});
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/sendLocation');
     xhr.send(json_text);
