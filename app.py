@@ -5,6 +5,9 @@ app = Flask(__name__)
 CORS(app)
 cnames = []
 data = []
+@app.route("/")
+def Lobby():
+	return render_template("Lobby/index.html")
 @app.route("/Nige")
 def Nige():
 	return render_template("Nige/index.html")
