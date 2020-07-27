@@ -289,6 +289,7 @@ const trackLocation = ({ onSuccess, onError = () => { } }) => {
  * @param {number} code
  * @return {String}
  */
+marker = null;
 const getPositionErrorMessage = code => {
   switch (code) {
     case 1:
@@ -312,12 +313,17 @@ function main(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  marker.setMap(map)
+  if(marker){
+    marker.setPosition({ lat, lng });
+  }
+  else{
+    marker = createMarker({ map, position: initialPosition });
+  }
   map.setCenter({ lat, lng})
-  marker.setPosition({ lat, lng });
+  
   $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
   $info.classList.remove('error');
-  location.reload();
+  setTimeout(main, 5000);
   //Next:setTitleで逃走者のコードネームをマーカーに表示する
   /**
    * Initialize the application.
@@ -327,10 +333,7 @@ function main(){
 function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
   map = createMap(initialPosition);
-  marker = createMarker({ map, position: initialPosition });
-  window.addEventListener("load",function() {
-    setTimeout(main, 5000);
-  });
+
 };
           </script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
