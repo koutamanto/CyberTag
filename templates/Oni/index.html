@@ -312,7 +312,7 @@ function main(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  if(typeof marker == "undefined"){
+  if(typeof marker != "undefined"){
     marker.setPosition({ lat, lng });
   }
   else{
