@@ -289,7 +289,6 @@ const trackLocation = ({ onSuccess, onError = () => { } }) => {
  * @param {number} code
  * @return {String}
  */
-marker = null;
 const getPositionErrorMessage = code => {
   switch (code) {
     case 1:
@@ -313,7 +312,7 @@ function main(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  if(marker){
+  if(typeof marker == "undefined"){
     marker.setPosition({ lat, lng });
   }
   else{
