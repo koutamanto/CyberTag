@@ -306,6 +306,7 @@ function main(){
     res = xhr.response;
     console.log(res)
     data = xhr.responseText;
+    data = JSON.parse(data)
     console.log(data);
     var lats = data.lat;
     var lat = parseFloat(lats);
