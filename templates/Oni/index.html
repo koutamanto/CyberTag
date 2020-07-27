@@ -303,6 +303,8 @@ function main(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
+  res = xhr.response;
+  console.log(res)
   data = xhr.responseText;
   console.log(data);
   var lats = data.lat;
