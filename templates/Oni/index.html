@@ -316,9 +316,9 @@ function main(){
     console.log(lng);
     const $info = document.getElementById('info');
     if(typeof marker == "undefined"){
+      map = createMap({lat:lat, lng: lng});
       marker = createMarker({ map, position: {lat: lat, lng: lng} });
       console.log("createMarker")
-
     }
     else{
       marker.setPosition({ lat, lng });
@@ -340,7 +340,6 @@ function main(){
   }
 function init() {
   initialPosition = { lat: "11.111", lng: "11.111" };
-  map = createMap(initialPosition);
   main()
 };
           </script>
