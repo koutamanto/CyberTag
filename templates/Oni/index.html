@@ -314,9 +314,11 @@ function main(){
   const $info = document.getElementById('info');
   if(typeof marker != "undefined"){
     marker.setPosition({ lat, lng });
+    console.log("setPosition")
   }
   else{
     marker = createMarker({ map, position: initialPosition });
+    console.log("createMarker")
   }
   map.setCenter({ lat, lng})
   
