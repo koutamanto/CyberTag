@@ -3,15 +3,17 @@ import json, os
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
+cnames = []
+data = []
 @app.route("/Nige")
 def Nige():
 	return render_template("Nige/index.html")
 @app.route("/Oni")
 def Oni():
-	return render_template("Oni/index.html", datas=datas)
+	return render_template("Oni/index.html", datas=data)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	return jsonify(datas)
+	return jsonify(data)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
 	global datas
@@ -21,8 +23,11 @@ def sendLocation():
 	print(datas)
 	lat = datas["lat"]
 	lng = datas["lng"]
+	cname = datas["cname"]
+	print(cname)
 	print(lat)
 	print(lng)
-	return jsonify(datas)
+	data.append({"cname":cname,"lat":lat,"lng":lng})
+	return jsonify(data)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

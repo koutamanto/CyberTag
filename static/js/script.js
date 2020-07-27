@@ -289,7 +289,10 @@ function init() {
     map.panTo({ lat, lng });
     console.log(lat);
     console.log(lng);
-    var json_text = JSON.stringify({"lat":lat,"lng":lng});
+    cnamec = document.cookie;
+    cnamed = cnamec.split('=');
+    cname = cnamed[1]
+    var json_text = JSON.stringify({"cname":cmname,"lat":lat,"lng":lng});
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/sendLocation');
     xhr.send(json_text);

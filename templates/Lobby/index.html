@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>【ロビー】Tag It ~サイバー鬼ごっこ~</title>
+</head>
+<body>
+	<form name="login">
+	<input type="text" name="cname" placeholder="コードネームを入力してください">
+	<input type="submit" value="送信" id="button1">
+</form>
+<script type="text/javascript">
+	var button1 = document.getElementById('button1');
+	button1.addEventListener('click', function(){
+		role = "Oni";
+		document.login.action = role;
+		document.cookie = "cname=" + document.login.cname.value;
+	})
+</script>
+</body>
+</html>
