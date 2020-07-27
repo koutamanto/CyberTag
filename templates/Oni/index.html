@@ -313,7 +313,7 @@ function main(){
   console.log(lng);
   const $info = document.getElementById('info');
   if(typeof marker == "undefined"){
-    marker = createMarker({ map, position: initialPosition });
+    marker = createMarker({ map, position: {lat: lat, lng: lng} });
     console.log("createMarker")
 
   }
