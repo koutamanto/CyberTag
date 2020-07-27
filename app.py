@@ -11,9 +11,7 @@ def Oni():
 	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	response = make_response(datas)
-	response.headers['Access-Control-Allow-Origin'] = '*'
-	return response
+	return jsonify(datas)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
 	global datas
