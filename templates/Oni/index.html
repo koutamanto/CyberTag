@@ -303,7 +303,6 @@ function main(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
   xhr.send();
-  request.responseType = 'text';
   res = xhr.response;
   console.log(res)
   data = xhr.responseText;
