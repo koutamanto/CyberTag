@@ -312,13 +312,14 @@ function main(){
   var lng = parseFloat(lngs);
   console.log(lng);
   const $info = document.getElementById('info');
-  if(typeof marker != "undefined"){
-    marker.setPosition({ lat, lng });
-    console.log("setPosition")
-  }
-  else{
+  if(typeof marker == "undefined"){
     marker = createMarker({ map, position: initialPosition });
     console.log("createMarker")
+
+  }
+  else{
+    marker.setPosition({ lat, lng });
+    console.log("setPosition")
   }
   map.setCenter({ lat, lng})
   
