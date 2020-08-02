@@ -311,26 +311,26 @@ function main(){
     data = JSON.parse(data)
     console.log(data);
     for(var d of data){
-    var lats = d.lat;
-    var lat = parseFloat(lats);
-    console.log(lat);
-    var lngs = d.lng;
-    var lng = parseFloat(lngs);
-    console.log(lng);
-    d.filter(function(item, index){
-      if(item.cname == cname) return true;
-    });
-    var cname = d.cname;
-    const $info = document.getElementById('info');
-    marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
-    console.log("createMarker")
-    marker.setPosition({ lat, lng });
-    console.log("setPosition")
-    map.setCenter({ lat, lng})
-    
-    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
-    $info.classList.remove('error');
-  }
+      var lats = d.lat;
+      var lat = parseFloat(lats);
+      console.log(lat);
+      var lngs = d.lng;
+      var lng = parseFloat(lngs);
+      console.log(lng);
+      d.filter(function(item, index){
+        if(item.cname == cname) return true;
+      });
+      var cname = d.cname;
+      const $info = document.getElementById('info');
+      marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
+      console.log("createMarker")
+      marker.setPosition({ lat, lng });
+      console.log("setPosition")
+      map.setCenter({ lat, lng})
+      
+      $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
+      $info.classList.remove('error');
+    }
   };
 
 
