@@ -321,11 +321,11 @@ function main(){
       var cname = d.cname;
       cnamelogs.push(cname)
       console.log(cnamelogs)
-      if(cnamelogs.some(d.cname => d.cname === d.cname)){
+      if (arr.indexOf(d.cname) >= 0){
         marker.setPosition({ lat, lng });
         console.log("setPosition")
       }
-      else{
+      if (arr.indexOf(d.cname) == -1){
         marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
         console.log("createMarker")
         map.setCenter({ lat, lng})
