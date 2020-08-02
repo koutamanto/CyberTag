@@ -262,8 +262,8 @@
  * @param {Object} position
  * @return {Object}
  */
-const createMarker = ({ map, position }) => {
-  return new google.maps.Marker({ map, position});
+const createMarker = ({ map, position, title}) => {
+  return new google.maps.Marker({ map, position, title});
 };
 
 /**
@@ -320,7 +320,7 @@ function main(){
       var cname = d.cname
       const $info = document.getElementById('info');
       if(typeof marker == "undefined"){
-        marker = createMarker({ map, position: {lat: lat, lng: lng} });
+        marker = createMarker({ map, position: {lat: lat, lng: lng} title: cname});
         console.log("createMarker")
       }
       else{
