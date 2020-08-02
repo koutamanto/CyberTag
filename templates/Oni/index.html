@@ -319,7 +319,7 @@ function main(){
       console.log(lng);
       if(cname == d.cname){
         d.filter(function(item, index){
-          if(item.cname == cname)
+          if(item.cname == cname) return true;
         }
       };
       var cname = d.cname;
