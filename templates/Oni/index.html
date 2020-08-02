@@ -310,16 +310,16 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    var lats = d.lat;
+    var lats = data.lat;
     var lat = parseFloat(lats);
     console.log(lat);
-    var lngs = d.lng;
+    var lngs = data.lng;
     var lng = parseFloat(lngs);
     console.log(lng);
-    d.filter(function(item, index){
+    data.filter(function(item, index){
       if(item.cname == cname) return true;
     });
-    var cname = d.cname;
+    var cname = data.cname;
     const $info = document.getElementById('info');
     marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
     console.log("createMarker")
