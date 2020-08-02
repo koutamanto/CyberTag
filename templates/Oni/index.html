@@ -320,7 +320,7 @@ function main(){
       var cname = d.cname
       const $info = document.getElementById('info');
       if(typeof marker == "undefined"){
-        marker = createMarker({ map, position: {lat: lat, lng: lng} title: cname});
+        marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
         console.log("createMarker")
       }
       else{
