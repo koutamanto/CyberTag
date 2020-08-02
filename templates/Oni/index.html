@@ -317,7 +317,10 @@ function main(){
       var lngs = d.lng;
       var lng = parseFloat(lngs);
       console.log(lng);
-      var cname = d.cname
+      d.filter(function(item, index){
+        if(item.cname == cname) return true;
+      });
+      var cname = d.cname;
       const $info = document.getElementById('info');
       if(typeof marker == "undefined"){
         marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
