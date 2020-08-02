@@ -321,14 +321,15 @@ function main(){
       var cname = d.cname;
       cnamelogs.push(cname)
       console.log(cnamelogs)
-      if (cnamelogs.indexOf(d.cname) >= 0){
-        marker.setPosition({ lat, lng });
-        console.log("setPosition")
-      }
+
       if (cnamelogs.indexOf(d.cname) == -1){
         marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
         console.log("createMarker")
         map.setCenter({ lat, lng})
+      }
+      if (cnamelogs.indexOf(d.cname) >= 0){
+        marker.setPosition({ lat, lng });
+        console.log("setPosition")
       }
       const $info = document.getElementById('info');
 
