@@ -299,6 +299,7 @@ const getPositionErrorMessage = code => {
       return 'Timeout reached.';
   }
 }
+cnamelogs = []
 function main(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
@@ -318,13 +319,19 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
+      cnamelogs.push(cname)
+      console.log(cnamelogs)
+      if(cnamelogs.some(d.cname => d.cname === d.cname)){
+        marker.setPosition({ lat, lng });
+        console.log("setPosition")
+      }
+      else{
+        marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
+        console.log("createMarker")
+        map.setCenter({ lat, lng})
+      }
       const $info = document.getElementById('info');
-      marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
-      console.log("createMarker")
-      marker.setPosition({ lat, lng });
-      console.log("setPosition")
-      map.setCenter({ lat, lng})
-      
+
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
       $info.classList.remove('error');
     }
