@@ -50,24 +50,24 @@
 <script>
 const input = document.querySelector('input')
 const btn = document.getElementById('btn')
-let userName = ''
+let userName = '';
 input.addEventListener('input', function () {
   if(input.value.length > 0) {
-    userName = input.value
+    userName = input.value;
     if(!btn.classList.contains('button-primary')){
-      btn.classList.add("button-primary")
-      btn.disabled = false
+      btn.classList.add("button-primary");
+      btn.disabled = false;
     }
   } else {
     if(btn.classList.contains('button-primary')){
-      btn.classList.remove("button-primary")
-      btn.disabled = true
+      btn.classList.remove("button-primary");
+      btn.disabled = true;
     }
   }
 })
 function join() {
-	document.cookie = "name=" + userName
-	location.href = '/Nige'
+	document.cookie = "name=" + userName;
+	location.href = '/Nige';
 }
 </script>
 </html>
