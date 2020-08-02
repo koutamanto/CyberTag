@@ -305,10 +305,12 @@ function main(){
   xhr.onload = function(){
     res = xhr.response;
     console.log(res)
-    d = xhr.responseText;
+    data = xhr.responseText;
     console.log(data)
     let currentWindow;
-    map({
+    data = data.split(',');
+    console.log(data)
+    data.map(d => {
       console.log(data);
       var lats = d.lat;
       var lat = parseFloat(lats);
