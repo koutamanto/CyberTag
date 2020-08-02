@@ -308,8 +308,7 @@ function main(){
     data = xhr.responseText;
     console.log(data)
     let currentWindow;
-    data = data.split(',');
-    console.log(data)
+    data = JSON.parse(data)
     data.map(d => {
       console.log(data);
       var lats = d.lat;
