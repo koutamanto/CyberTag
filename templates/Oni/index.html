@@ -340,9 +340,11 @@ function main(){
       lat = 0;
       lngs = 0;
       lng = 0;
-      lats = String(markers[i]["lat"])
+      lats = markers[i]["lat"]
+      latt = String(lats)
       lat = parseFloat(lats)
-      lngs = String(markers[i]["lng"])
+      lngs = markers[i]["lng"]
+      lngt = String(lngs)
       lng = parseFloat(lngs)
       cname = markers[i]["cname"]
       if(typeof marker != "undefined"){
