@@ -13,11 +13,11 @@ def Nige():
 	return render_template("Nige/index.html")
 @app.route("/Oni")
 def Oni():
-	return render_template("Oni/index.html", datas=data)
+	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
-	print('[getLocation:]' + str(data))
-	return jsonify(data)
+	print('[getLocation:]' + str(datas))
+	return jsonify(datas)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
 	global datas
@@ -31,8 +31,6 @@ def sendLocation():
 	print(cname)
 	print(lat)
 	print(lng)
-	data = {"cname":cname,"lat":lat,"lng":lng}
-	print(data)
-	return jsonify(data)
+	return jsonify(datas)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
