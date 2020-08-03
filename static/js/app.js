@@ -268,7 +268,7 @@ function getNewMarker() {
                 title: codename,
                 icon:{
                     path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-                    scale: 15;
+                    scale: 15
                 }
             })
             var latLng = new google.maps.LatLng( lat, lng);
