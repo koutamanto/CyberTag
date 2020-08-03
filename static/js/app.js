@@ -1,3 +1,4 @@
+import 'whatwg-fetch'
 // マップ
 let mapElement = new google.maps.Map(
     document.getElementById('map'), {
