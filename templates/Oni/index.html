@@ -308,7 +308,6 @@ function attachMessage(marker, msg) {
   });
 }
 
-datass = new Array();
 datas = new Array();
 function main(){
   var xhr = new XMLHttpRequest();
@@ -329,13 +328,9 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
-      datass.push({position: new google.maps.LatLng(lat, lng), content: cname});
-      datas = datass.filter(function (x, i, self) {
-        return self.indexOf(x.content) === i;
-      });
-      console.log(datas)
-      console.log(datass)
+      datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
+      datas = Array.from(new Set(datas.content))
       for (i = 0; i < datas.length; i++) {
         var marker = new google.maps.Marker({
           position: datas[i].position,
