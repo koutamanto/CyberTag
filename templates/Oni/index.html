@@ -340,21 +340,21 @@ function main(){
       lat = 0;
       lngs = 0;
       lng = 0;
-      lats = JSON.stringify(markers[i]).lat
+      lats = markers[i]["lat"]
       console.log(typeof lats)
       lat = parseFloat(lats)
       console.log(typeof lat)
-      lngs = JSON.stringify(markers[i]).lng
+      lngs = markers[i]["lng"]
       lng = parseFloat(lngs)
-      cname = JSON.stringify(markers[i]).cname
+      cname = markers[i]["cname"]
       if(typeof marker != "undefined"){
         marker.setMap(null);
       }
-      marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(parseFloat(lat), parseFloat(lng)), title: cname});
+      marker = new google.maps.Marker({map: map, position: {parseFloat(lat), parseFloat(lng)}, title: cname});
       console.log("createMarker");
-      marker.setPosition(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
+      marker.setPosition({parseFloat(lat), parseFloat(lng)});
       console.log("setPosition");
-      map.setCenter(new google.maps.LatLng(parseFloat(lat), parseFloat(lng)));
+      map.setCenter({parseFloat(lat), parseFloat(lng)});
       attachMessage(marker, markers[i].content);
     }
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
