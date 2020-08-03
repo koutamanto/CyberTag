@@ -308,19 +308,6 @@ function attachMessage(marker, msg) {
   });
 }
 
-function filterByProperty(array, propertyName) {
-  var occurrences = {}
-
-  return array.filter(function(x) {
-    var property = x[propertyName]
-    if (occurrences[property]) {
-      return false;
-    }
-    occurrences[property] = true;
-    return true;
-  })
-}
-
 datas = new Array();
 function main(){
   var xhr = new XMLHttpRequest();
@@ -344,7 +331,7 @@ function main(){
       datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
       console.log(datas)
-      datas = filterByProperty(datas, 'content')
+      datas = datas.filter((element, index, self) => self.findIndex(e => e.content === element.content) === index);
       console.log(datas)
       for (i = 0; i < datas.length; i++) {
         var marker = new google.maps.Marker({
