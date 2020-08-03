@@ -17,6 +17,7 @@ async function getNewMarker() {
     // リクエスト
     const req = await fetch('/getLocation')
     const resp = req.json()
+    console.log(resp)
     // 応答の整形
     let lat = parseFloat(resp.lat)
     let lng = parseFloat(resp.lng)
