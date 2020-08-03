@@ -320,10 +320,10 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    var lats = String(data.lat);
+    var lats = data.lat;
     var lat = parseFloat(lats);
     console.log(lat);
-    var lngs = String(data.lng);
+    var lngs = data.lng;
     var lng = parseFloat(lngs);
     console.log(lng);
     var cname = data.cname;
