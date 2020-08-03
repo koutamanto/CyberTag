@@ -36,6 +36,8 @@ function getNewMarker() {
                 },
                 title: codename
             })
+            var latLng = new google.maps.LatLng( lat, lng);
+            map.setCenter( latLng );
             // 新しいマーカーをタップした際に出る情報欄設定
             google.maps.event.addListener(new_marker, 'click', function () {
                 new google.maps.InfoWindow({
