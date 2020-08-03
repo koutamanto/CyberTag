@@ -16,6 +16,7 @@ def Oni():
 	return render_template("Oni/index.html", datas=data)
 @app.route("/getLocation", methods=["GET"])
 def getLocation():
+	print('[getLocation:]' + data)
 	return jsonify(data)
 @app.route("/sendLocation", methods=["POST"])
 def sendLocation():
