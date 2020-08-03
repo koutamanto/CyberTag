@@ -308,7 +308,7 @@ function attachMessage(marker, msg) {
   });
 }
 
-datas = new Array();
+datass = new Array();
 function main(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
@@ -328,11 +328,11 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
-      datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
+      datass.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
-      console.log(datas)
+      console.log(datass)
       let values = [];
-      let datas = datas.filter(e => {
+      let datas = datass.filter(e => {
         if (values.indexOf(e["cname"]) === -1) {
           values.push(e["cname"]);
           return e;
