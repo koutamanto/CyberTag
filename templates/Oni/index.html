@@ -335,6 +335,9 @@ function main(){
           position: datas[i].position,
           map: map
         });
+        if(datas[i].cname == datas[i-1].cname){
+          datas[i-1] = {}
+        }
         console.log("createMarker");
         marker.setPosition({ lat, lng });
         console.log("setPosition");
