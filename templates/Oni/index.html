@@ -320,10 +320,10 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    var lats = data.lat;
+    var lats = data.lat.toString();
     var lat = parseFloat(lats);
     console.log(lat);
-    var lngs = data.lng;
+    var lngs = data.lng.toString;
     var lng = parseFloat(lngs);
     console.log(lng);
     var cname = data.cname;
@@ -340,9 +340,9 @@ function main(){
       lat = 0;
       lngs = 0;
       lng = 0;
-      lats = markers[i]["lat"]
+      lats = markers[i]["lat"].toString()
       lat = parseFloat(lats)
-      lngs = markers[i]["lng"]
+      lngs = markers[i]["lng"].toString()
       lng = parseFloat(lngs)
       cname = markers[i]["cname"]
       if(typeof marker != "undefined"){
