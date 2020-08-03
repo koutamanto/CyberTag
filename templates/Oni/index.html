@@ -320,6 +320,7 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
+    const data = data.slice(-1)[0]
     for(var d of data){
       var lats = d.lat;
       var lat = parseFloat(lats);
@@ -329,7 +330,6 @@ function main(){
       console.log(lng);
       var cname = d.cname;
       datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
-      datas = _.uniqBy(datas,'cname');
       const $info = document.getElementById('info');
       console.log(datas)
       console.log(datas)
