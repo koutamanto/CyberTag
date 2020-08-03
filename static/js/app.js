@@ -18,6 +18,7 @@ function getNewMarker() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/getLocation');
     xhr.onload = function () {
+        const resp = JSON.parse(xhr.responseText)
         let lat = parseFloat(resp.lat)
         let lng = parseFloat(resp.lng)
         let codename = resp.cname
