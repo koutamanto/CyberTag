@@ -320,8 +320,8 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    const data = data.slice(-1)[0]
-    for(var d of data){
+    const ds = data.slice(-1)[0]
+    for(var d of ds){
       var lats = d.lat;
       var lat = parseFloat(lats);
       console.log(lat);
