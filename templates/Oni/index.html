@@ -328,7 +328,7 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
-      datass.push({position: new google.maps.LatLng(lat, lng), content: cname});
+      datass.push({position: {lat, lng}, content: cname});
       const $info = document.getElementById('info');
       console.log(datass)
       let values = [];
