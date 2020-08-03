@@ -265,11 +265,7 @@ function getNewMarker() {
                     lat: lat,
                     lng: lng
                 },
-                title: codename,
-                icon:{
-                    path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
-                    scale: 15
-                }
+                title: codename
             })
             var latLng = new google.maps.LatLng( lat, lng);
             map.setCenter( latLng );
