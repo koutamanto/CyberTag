@@ -331,7 +331,7 @@ function main(){
       var cname = d.cname;
       datass.push({position: new google.maps.LatLng(lat, lng), content: cname});
       var datas = datass.filter(function (x, i, self) {
-            return self.indexOf(x).content === i;
+            return self.indexOf(x.content) === i;
         });
       const $info = document.getElementById('info');
       for (i = 0; i < datas.length; i++) {
