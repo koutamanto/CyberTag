@@ -308,6 +308,19 @@ function attachMessage(marker, msg) {
   });
 }
 
+function filterByProperty(array, propertyName) {
+  var occurrences = {}
+
+  return array.filter(function(x) {
+    var property = x[propertyName]
+    if (occurrences[property]) {
+      return false;
+    }
+    occurrences[property] = true;
+    return true;
+  })
+}
+
 datas = new Array();
 function main(){
   var xhr = new XMLHttpRequest();
@@ -330,7 +343,7 @@ function main(){
       var cname = d.cname;
       datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
-      datas = Array.from(new Set(datas.content))
+      datas = filterByProperty(datas, 'content')
       for (i = 0; i < datas.length; i++) {
         var marker = new google.maps.Marker({
           position: datas[i].position,
