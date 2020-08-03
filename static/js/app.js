@@ -13,45 +13,52 @@ let displayedMarkers = []
 
 
 // 5秒ごとに実行されるループ
-async function getNewMarker() {
+function getNewMarker() {
     // リクエスト
-    await fetch('/getLocation').then(resp => resp.json())
-    // 応答の整形
-    let lat = parseFloat(resp.lat)
-    let lng = parseFloat(resp.lng)
-    let codename = resp.cname
-    console.log("[lat:]"+lat+"[lng:]"+lng+"[codename:]"+codename)
-    // 既にマーカーが存在するか確認
-    const displayed_codenames = displayedMarkers.map(marker => marker.title)
-    if (!displayed_codenames.includes(codename)) {
-        // 新しいマーカーを作成
-        const new_marker = new google.maps.Marker({
-            map: map,
-            position: {
-                lat: lat,
-                lng: lng
-            },
-            title: codename
-        })
-        // 新しいマーカーをタップした際に出る情報欄設定
-        google.maps.event.addListener(new_marker, 'click', function () {
-            new google.maps.InfoWindow({
-                content: codename
-            }).open(new_marker.getMap(), new_marker)
-        })
-        // 新しいマーカーをリストに追加
-        displayedMarkers.push(new_marker)
-    } else {
-        // 古い同名のマーカーに新しい位置を設定
-        for (let m in displayedMarkers) {
-            if (displayedMarkers[m].title == codename) {
-                displayedMarkers[m].setPosition({lat:lat, lng:lng})
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/getLocation');
+    xhr.onload = function () {
+        // 応答の整形
+        const resp = JSON.parse(xhr.responseText)
+        let lat = parseFloat(resp.lat)
+        let lng = parseFloat(resp.lng)
+        let codename = resp.cname
+        console.log("[lat:]"+lat+"[lng:]"+lng+"[codename:]"+codename)
+        // 既にマーカーが存在するか確認
+        const displayed_codenames = displayedMarkers.map(marker => marker.title)
+        if (!displayed_codenames.includes(codename)) {
+            // 新しいマーカーを作成
+            const new_marker = new google.maps.Marker({
+                map: map,
+                position: {
+                    lat: lat,
+                    lng: lng
+                },
+                title: codename
+            })
+            // 新しいマーカーをタップした際に出る情報欄設定
+            google.maps.event.addListener(new_marker, 'click', function () {
+                new google.maps.InfoWindow({
+                    content: codename
+                }).open(new_marker.getMap(), new_marker)
+            })
+            // 新しいマーカーをリストに追加
+            displayedMarkers.push(new_marker)
+        } else {
+            // 古い同名のマーカーに新しい位置を設定
+            for (let m in displayedMarkers) {
+                if (displayedMarkers[m].title == codename) {
+                    displayedMarkers[m].setPosition({lat:lat, lng:lng})
+                }
             }
         }
-    }
-    // 追加された要素を表示する?
-    infoElement.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} codename:${codename}`
-    infoElement.classList.remove('error')
+        // 追加された要素を表示する?
+        infoElement.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} codename:${codename}`
+        infoElement.classList.remove('error')
+        }
+    xhr.send()
+    // 5秒ごとに実行させる
+    setTimeout(getNewMarker, 5000)
 }
-// 5秒ごとに実行するループ開始
-setInterval(getNewMarker, 5000)
+// ループ開始
+getNewMarker()
