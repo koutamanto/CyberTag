@@ -327,19 +327,19 @@ function main(){
     var lng = parseFloat(lngs);
     console.log(lng);
     var cname = data.cname;
-    datas = {position: {lat:lat, lng:lng}, content: cname};
+    datas = {position: new google.maps.LatLng(lat, lng), content: cname};
     const $info = document.getElementById('info');
     console.log(datas)
     console.log(datas)
     markers = markers.filter(marker => marker.cname !== cname)
     markers.push(datas)
-    for (i = 0; i < datas.length; i++) {
-      marker = new google.maps.Marker(map: map, positon: {datas[i].lat, datas[i].lng}, title: datas[i].content);
+    for (i = 0; i < markers.length; i++) {
+      marker = new google.maps.Marker(map: map, positon: new google.maps.LatLng(markers[i].lat, markers[i].lng), title: markers[i].cname);
       console.log("createMarker");
-      marker.setPosition({ datas[i].lat, datas[i].lng });
+      marker.setPosition({ markers[i].lat, markers[i].lng });
       console.log("setPosition");
-      map.setCenter({ datas[i].lat, datas[i].lng});
-      attachMessage(marker, datas[i].content);
+      map.setCenter({ markers[i].lat, markers[i].lng});
+      attachMessage(marker, markers[i].content);
     }
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
     $info.classList.remove('error');
