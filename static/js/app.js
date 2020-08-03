@@ -235,8 +235,8 @@ let map = new google.maps.Map(
           }
         ]
       }
-    ]
-  });
+    ]    }
+)
 // 情報表示エリア(?)
 let infoElement = document.getElementById('info')
 // 既に表示されているマーカー一覧
