@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 cnames = []
-data = []
+data = {}
 @app.route("/")
 def Lobby():
 	return render_template("Lobby/index.html")
