@@ -331,7 +331,13 @@ function main(){
       datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
       console.log(datas)
-      datas = datas.filter((element, index, self) => self.findIndex(e => e.content === element.content) === index);
+      let values = [];
+      let datas = datas.filter(e => {
+        if (values.indexOf(e["cname"]) === -1) {
+          values.push(e["cname"]);
+          return e;
+        }
+      });
       console.log(datas)
       for (i = 0; i < datas.length; i++) {
         var marker = new google.maps.Marker({
