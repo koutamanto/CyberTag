@@ -340,13 +340,13 @@ function main(){
       lat = 0;
       lngs = 0;
       lng = 0;
-      lats = JSON.parse(markers[i]).lat
+      lats = JSON.stringify(markers[i]).lat
       console.log(typeof lats)
       lat = parseFloat(lats)
       console.log(typeof lat)
-      lngs = JSON.parse(markers[i]).lng
+      lngs = JSON.stringify(markers[i]).lng
       lng = parseFloat(lngs)
-      cname = JSON.parse(markers[i]).cname
+      cname = JSON.stringify(markers[i]).cname
       if(typeof marker != "undefined"){
         marker.setMap(null);
       }
