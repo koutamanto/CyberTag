@@ -320,6 +320,12 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
+    var lats = data.lat;
+    var lat = parseFloat(lats);
+    console.log(lat);
+    var lngs = data.lng;
+    var lng = parseFloat(lngs);
+    console.log(lng);
     var cname = data.cname;
     datas = {position: new google.maps.LatLng(lat, lng), content: cname};
     const $info = document.getElementById('info');
@@ -330,6 +336,10 @@ function main(){
     console.log(markers)
     for (i = 0; i < markers.length; i++) {
       console.log(markers[i])
+      lats = 0;
+      lat = 0;
+      lngs = 0;
+      lng = 0;
       lats = markers[i]["lat"]
       lat = parseFloat(lats)
       lngs = markers[i]["lng"]
