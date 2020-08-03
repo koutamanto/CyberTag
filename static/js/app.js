@@ -1,5 +1,5 @@
 // マップ
-let mapElement = new google.maps.Map(
+let map = new google.maps.Map(
     document.getElementById('map'), {
         center: new google.maps.LatLng("11.111", "11.111"),
         zoom: 18,
