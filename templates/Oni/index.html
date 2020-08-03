@@ -320,13 +320,13 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    var lats = d.lat;
+    var lats = data.lat;
     var lat = parseFloat(lats);
     console.log(lat);
-    var lngs = d.lng;
+    var lngs = data.lng;
     var lng = parseFloat(lngs);
     console.log(lng);
-    var cname = d.cname;
+    var cname = data.cname;
     datas = {position: new google.maps.LatLng(lat, lng), content: cname};
     const $info = document.getElementById('info');
     console.log(datas)
