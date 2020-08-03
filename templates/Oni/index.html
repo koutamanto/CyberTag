@@ -340,6 +340,9 @@ function main(){
       lngs = markers[i].lng
       lng = parseFloat(lngs)
       cname = markers[i].cname
+      if(typeof marker != "undefined"){
+        marker.setMap(null);
+      }
       marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(lat, lng), title: cname});
       console.log("createMarker");
       marker.setPosition({ lat, lng });
