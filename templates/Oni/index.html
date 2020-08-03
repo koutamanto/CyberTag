@@ -327,7 +327,7 @@ function main(){
     var lng = parseFloat(lngs);
     console.log(lng);
     var cname = data.cname;
-    datas = {position: new google.maps.LatLng(lat, lng), content: cname};
+    datas = {position: {lat:lat, lng:lng}, content: cname};
     const $info = document.getElementById('info');
     console.log(datas)
     console.log(datas)
