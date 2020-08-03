@@ -331,7 +331,7 @@ function main(){
     const $info = document.getElementById('info');
     console.log(datas)
     console.log(datas)
-    markers = markers.filter(marker => marker.cname !== cname)
+    markers = datas.filter(marker => marker.cname !== cname)
     markers.push(datas)
     console.log(markers)
     for (i = 0; i < markers.length; i++) {
