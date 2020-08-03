@@ -15,7 +15,7 @@ let displayedMarkers = []
 // 5秒ごとに実行されるループ
 async function getNewMarker() {
     // リクエスト
-    const req = await fetch('/getLocation',{method: 'GET'})
+    const req = await fetch('/getLocation')
     const resp = req.json()
     // 応答の整形
     let lat = parseFloat(resp.lat)
