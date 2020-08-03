@@ -335,11 +335,16 @@ function main(){
     markers.push(datas)
     console.log(markers)
     for (i = 0; i < markers.length; i++) {
-      marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(markers[i].lat, markers[i].lng), title: markers[i].cname});
+      lats = markers[i].lat
+      lat = parseFloat(lats)
+      lngs = markers[i].lng
+      lng = parseFloat(lngs)
+      cname = markers[i].cname
+      marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(lat, lng), title: cname});
       console.log("createMarker");
-      marker.setPosition({ markers[i].lat, markers[i].lng });
+      marker.setPosition({ lat, lng });
       console.log("setPosition");
-      map.setCenter({ markers[i].lat, markers[i].lng});
+      map.setCenter({ lat, lng);
       attachMessage(marker, markers[i].content);
     }
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
