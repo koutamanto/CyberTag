@@ -334,7 +334,7 @@ function main(){
     markers = markers.filter(marker => marker.cname !== cname)
     markers.push(datas)
     for (i = 0; i < markers.length; i++) {
-      marker = new google.maps.Marker(map: map, positon: new google.maps.LatLng(markers[i].lat, markers[i].lng), title: markers[i].cname);
+      marker = new google.maps.Marker({map: map, positon: new google.maps.LatLng(markers[i].lat, markers[i].lng), title: markers[i].cname});
       console.log("createMarker");
       marker.setPosition({ markers[i].lat, markers[i].lng });
       console.log("setPosition");
