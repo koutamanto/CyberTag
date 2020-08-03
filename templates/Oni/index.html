@@ -341,20 +341,18 @@ function main(){
       lngs = 0;
       lng = 0;
       lats = markers[i]["lat"]
-      latt = String(lats)
       lat = parseFloat(lats)
       lngs = markers[i]["lng"]
-      lngt = String(lngs)
       lng = parseFloat(lngs)
       cname = markers[i]["cname"]
       if(typeof marker != "undefined"){
         marker.setMap(null);
       }
-      marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(lat, lng), title: cname});
+      marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(+lat, +lng), title: cname});
       console.log("createMarker");
-      marker.setPosition(new google.maps.LatLng(lat, lng));
+      marker.setPosition(new google.maps.LatLng(+lat, +lng));
       console.log("setPosition");
-      map.setCenter(new google.maps.LatLng(lat, lng));
+      map.setCenter(new google.maps.LatLng(+lat, +lng));
       attachMessage(marker, markers[i].content);
     }
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
