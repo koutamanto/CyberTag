@@ -320,8 +320,7 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    const ds = data.slice(-1)[0]
-    for(var d of ds){
+    for(var d of data){
       var lats = d.lat;
       var lat = parseFloat(lats);
       console.log(lat);
@@ -329,7 +328,7 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
-      datas.push({position: new google.maps.LatLng(lat, lng), content: cname});
+      datas = {position: new google.maps.LatLng(lat, lng), content: cname};
       const $info = document.getElementById('info');
       console.log(datas)
       console.log(datas)
@@ -364,7 +363,6 @@ function init() {
   main()
 };
           </script>
-          <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js"></script>
           <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnvfCzfTUocTomdfaS9h6xDYBI76RMdbI&callback=init"></script>
     </body>
     </html>
