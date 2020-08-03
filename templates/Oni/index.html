@@ -320,33 +320,32 @@ function main(){
     let currentWindow;
     data = JSON.parse(data)
     console.log(data);
-    for(var d of data){
-      var lats = d.lat;
-      var lat = parseFloat(lats);
-      console.log(lat);
-      var lngs = d.lng;
-      var lng = parseFloat(lngs);
-      console.log(lng);
-      var cname = d.cname;
-      datas = {position: new google.maps.LatLng(lat, lng), content: cname};
-      const $info = document.getElementById('info');
-      console.log(datas)
-      console.log(datas)
-      for (i = 0; i < datas.length; i++) {
-        var marker = new google.maps.Marker({
-          position: datas[i].position,
-          map: map
-        });
-        console.log("createMarker");
-        marker.setPosition({ lat, lng });
-        console.log("setPosition");
-        map.setCenter({ lat, lng});
-        attachMessage(marker, datas[i].content);
-  }   
-      $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
-      $info.classList.remove('error');
-    }
-  };
+    var lats = d.lat;
+    var lat = parseFloat(lats);
+    console.log(lat);
+    var lngs = d.lng;
+    var lng = parseFloat(lngs);
+    console.log(lng);
+    var cname = d.cname;
+    datas = {position: new google.maps.LatLng(lat, lng), content: cname};
+    const $info = document.getElementById('info');
+    console.log(datas)
+    console.log(datas)
+    for (i = 0; i < datas.length; i++) {
+      var marker = new google.maps.Marker({
+        position: datas[i].position,
+        map: map
+      });
+      console.log("createMarker");
+      marker.setPosition({ lat, lng });
+      console.log("setPosition");
+      map.setCenter({ lat, lng});
+      attachMessage(marker, datas[i].content);
+    }   
+    $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
+    $info.classList.remove('error');
+  }
+};
 
 
   xhr.send();
