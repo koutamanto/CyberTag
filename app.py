@@ -31,7 +31,7 @@ def sendLocation():
 	print(cname)
 	print(lat)
 	print(lng)
-	data.append({"cname":cname,"lat":lat,"lng":lng})
+	data = {"cname":cname,"lat":lat,"lng":lng}
 	print(data)
 	return jsonify(data)
 if __name__ == '__main__':
