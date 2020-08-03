@@ -340,11 +340,11 @@ function main(){
       lat = 0;
       lngs = 0;
       lng = 0;
-      lats = data[i]["lat"]
+      lats = data[i].lat
       lat = parseFloat(lats)
-      lngs = data[i]["lng"]
+      lngs = data[i].lng
       lng = parseFloat(lngs)
-      cname = data[i]["cname"]
+      cname = data[i].cname
       if(typeof marker != "undefined"){
         marker.setMap(null);
       }
