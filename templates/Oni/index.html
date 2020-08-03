@@ -299,7 +299,16 @@ const getPositionErrorMessage = code => {
       return 'Timeout reached.';
   }
 }
-cnamelogs = []
+
+function attachMessage(marker, msg) {
+  google.maps.event.addListener(marker, 'click', function(event) {
+    new google.maps.InfoWindow({
+      content: msg
+    }).open(marker.getMap(), marker);
+  });
+}
+
+data = new Array();
 function main(){
   var xhr = new XMLHttpRequest();
   xhr.open('GET','/getLocation');
@@ -319,24 +328,19 @@ function main(){
       var lng = parseFloat(lngs);
       console.log(lng);
       var cname = d.cname;
-      cnamelogs.push(cname)
-      console.log(cnamelogs)
-      if(typeof marker == "undefined"){
-        marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
-        console.log("createMarker")
-        map.setCenter({ lat, lng})
-      }
-      if (cnamelogs.indexOf(d.cname) == -1){
-        marker = createMarker({ map, position: {lat: lat, lng: lng}, title: cname});
-        console.log("createMarker")
-        map.setCenter({ lat, lng})
-      }
-      if (cnamelogs.indexOf(d.cname) >= 0){
-        marker.setPosition({ lat, lng });
-        console.log("setPosition")
-      }
+      data.push({position: new google.maps.LatLng(lat, lng), content: cname});
       const $info = document.getElementById('info');
-
+      for (i = 0; i < data.length; i++) {
+        var marker = new google.maps.Marker({
+          position: data[i].position,
+          map: map
+        });
+        console.log("createMarker");
+        marker.setPosition({ lat, lng });
+        console.log("setPosition");
+        map.setCenter({ lat, lng});
+        attachMessage(marker, data[i].content);
+  }   
       $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} cname:${cname}`;
       $info.classList.remove('error');
     }
