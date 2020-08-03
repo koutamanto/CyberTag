@@ -336,7 +336,7 @@ function main(){
     for (i = 0; i < markers.length; i++) {
       marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(markers[i].lat, markers[i].lng), title: markers[i].cname});
       console.log("createMarker");
-      marker.setPosition({map: map ,position: { markers[i].lat, markers[i].lng }});
+      marker.setPosition({ markers[i].lat, markers[i].lng });
       console.log("setPosition");
       map.setCenter({ markers[i].lat, markers[i].lng});
       attachMessage(marker, markers[i].content);
