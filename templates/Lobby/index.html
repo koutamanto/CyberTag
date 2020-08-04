@@ -50,8 +50,14 @@
 </body>
 <script>
 cookies = document.cookie;
-RoomIDd = cookies.split('=');
-RoomID = RoomIDd[1]
+if(cookies.match(/;/)){
+	RoomIDd = cookies.split(';');
+	RoomID = RoomIDd[1].split('=')[1]
+}
+else{
+	RoomID = cookies[1].split('=')[1]
+}
+
 console.log(RoomID)
 h3 = document.getElementsByTagName('h3')
 h3[0].innerText = "ルームID:" + RoomID
