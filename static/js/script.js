@@ -297,9 +297,9 @@ function init() {
     RoomID = RoomIDd[1]
     console.log(cname)
     console.log(RoomID)
-    var json_text = JSON.stringify({"roomid":RoomID,"cname":cname,"lat":lat,"lng":lng});
+    var json_text = JSON.stringify({"cname":cname,"lat":lat,"lng":lng});
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/sendLocation');
+    xhr.open('POST', '/sendLocation/'+RoomID);
     xhr.send(json_text);
     $info.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)}`;
     $info.classList.remove('error');

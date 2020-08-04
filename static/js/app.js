@@ -241,20 +241,19 @@ let map = new google.maps.Map(
 let infoElement = document.getElementById('info')
 // 既に表示されているマーカー一覧
 let displayedMarkers = []
-
+RoomID = document.cookie.split('=')[1];
 
 // 5秒ごとに実行されるループ
 function getNewMarker() {
     // リクエスト
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/getLocation');
+    xhr.open('GET', '/getLocation/'+RoomID);
     xhr.onload = function () {
         // 応答の整形
         const resp = JSON.parse(xhr.responseText)
         let lat = parseFloat(resp.lat)
         let lng = parseFloat(resp.lng)
         let codename = resp.cname
-        let RoomID = resp.roomid
         console.log("[lat:]"+lat+"[lng:]"+lng+"[codename:]"+codename+"[RoomID:]"+RoomID)
         // 既にマーカーが存在するか確認
         const displayed_codenames = displayedMarkers.map(marker => marker.title)

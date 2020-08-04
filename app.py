@@ -5,6 +5,7 @@ app = Flask(__name__)
 CORS(app)
 cnames = []
 data = {}
+rooms = {}
 @app.route("/")
 def Room():
 	return render_template("Room/index.html")
@@ -17,12 +18,13 @@ def Nige():
 @app.route("/Oni")
 def Oni():
 	return render_template("Oni/index.html", datas=datas)
-@app.route("/getLocation", methods=["GET"])
-def getLocation():
+@app.route("/getLocation/<int:roomid>", methods=["GET"])
+def getLocation(roomid):
+	datas = rooms[roomid]
 	print('[getLocation:]' + str(datas))
 	return jsonify(datas)
-@app.route("/sendLocation", methods=["POST"])
-def sendLocation():
+@app.route("/sendLocation/<int:roomid>", methods=["POST"])
+def sendLocation(roomid):
 	global datas
 	datas = request.get_data()
 	datas = datas.decode()
@@ -36,6 +38,8 @@ def sendLocation():
 	print(lat)
 	print(lng)
 	print(RoomID)
+	rooms[roomid] = rooms[roomid] + datas
+	print(rooms)
 	return jsonify(datas)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
