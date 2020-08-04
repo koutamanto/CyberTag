@@ -291,8 +291,8 @@ function init() {
     console.log(lng);
     cookies = document.cookie.split(";");
     console.log(cookies)
-    cnamed = cookies[0].split('=');
-    RoomIDd = cookies[1].split('=');
+    cnamed = cookies[1].split('=');
+    RoomIDd = cookies[0].split('=');
     cname = cnamed[1]
     RoomID = RoomIDd[1]
     console.log(cname)
