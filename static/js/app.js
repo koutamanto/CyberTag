@@ -241,7 +241,7 @@ let map = new google.maps.Map(
 let infoElement = document.getElementById('info')
 // 既に表示されているマーカー一覧
 let displayedMarkers = []
-RoomID = document.cookie.split('=')[1];
+RoomID = document.cookie.split(';')[0].split('=')[1];
 
 // 5秒ごとに実行されるループ
 function getNewMarker() {
