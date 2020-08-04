@@ -15,6 +15,7 @@
    <div class="container">
       <section class="header">
          <h2 class="title" id="demotext">Tag It サイバー鬼ごっこ</h2>
+         <h3 class="title" id="demotext"></h3>
          <div class="value-props row">
            <div class="six columns value-prop">
             <img class="value-img" src="static/images/wolf.png" style="width: 40%;height: 40%;">
@@ -55,6 +56,8 @@ cname = cnamed[1]
 RoomID = RoomIDd[1]
 console.log(cname)
 console.log(RoomID)
+h3 = document.getElementsByTagName('h3')
+h3.innerText = RoomID
 const input = document.querySelector('input')
 const btn = document.getElementById('btn')
 let userName = '';
@@ -73,7 +76,7 @@ input.addEventListener('input', function () {
   }
 })
 function join() {
-	document.cookie = "name=" + userName;
+	document.cookie = "name=" + userName; + "RoomID=" + RoomID;
 	location.href = '/Nige';
 }
 </script>
