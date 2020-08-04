@@ -48,7 +48,11 @@
   </div>
 </body>
 <script>
-RoomID = document.cookie;
+cnamec = document.cookie;
+cnamed = cnamec.split('=');
+cname = cnamed[1]
+RoomID = cnamed[3]
+console.log(cname)
 console.log(RoomID)
 const input = document.querySelector('input')
 const btn = document.getElementById('btn')
