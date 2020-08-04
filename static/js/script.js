@@ -291,10 +291,15 @@ function init() {
     console.log(lng);
     cookies = document.cookie.split(";");
     console.log(cookies)
-    cnamed = cookies[1].split('=');
-    RoomIDd = cookies[0].split('=');
-    cname = cnamed[1]
-    RoomID = RoomIDd[1]
+    for(c of cookies){
+      cArray = c.split('=');
+      if(cArray[0] == 'RoomID'){
+        RoomID = cArray[1]
+      }
+      if(cArray[0] == "name"){
+        cname = cArray[1]
+      }
+    }
     console.log(cname)
     console.log(RoomID)
     var json_text = JSON.stringify({"cname":cname,"lat":lat,"lng":lng});
