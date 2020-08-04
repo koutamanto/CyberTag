@@ -69,13 +69,13 @@ input.addEventListener('input', function () {
 })
 function join() {
   RoomID = input.value;
-	document.cookie = "RoomID=" + RoomID;
+	document.cookie = "RoomID=" + RoomID + ";path=/"
 	location.href = '/Lobby';
 }
 function create(){
   var ID = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
   console.log(ID);
-  document.cookie = "RoomID=" + ID;
+  document.cookie = "RoomID=" + ID + ";path=/"
   location.href = '/Lobby'
 }
 </script>
