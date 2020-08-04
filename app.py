@@ -38,7 +38,7 @@ def sendLocation(roomid):
 	print(cname)
 	print(lat)
 	print(lng)
-	rooms[roomid] = datas
+	rooms.setdefault(roomid,datas)
 	print(rooms)
 	return jsonify(datas)
 if __name__ == '__main__':
