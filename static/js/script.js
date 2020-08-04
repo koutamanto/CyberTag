@@ -289,10 +289,14 @@ function init() {
     map.panTo({ lat, lng });
     console.log(lat);
     console.log(lng);
-    cnamec = document.cookie;
-    cnamed = cnamec.split('=');
+    cookies = document.cookie.split(";");
+    cnamed = cookies[0].split('=');
+    RoomIDd = cookies[1].split('=');
     cname = cnamed[1]
-    var json_text = JSON.stringify({"cname":cname,"lat":lat,"lng":lng});
+    RoomID = RoomIDd[1]
+    console.log(cname)
+    console.log(RoomID)
+    var json_text = JSON.stringify({"roomid":RoomID,"cname":cname,"lat":lat,"lng":lng});
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/sendLocation');
     xhr.send(json_text);

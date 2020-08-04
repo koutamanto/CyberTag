@@ -254,7 +254,8 @@ function getNewMarker() {
         let lat = parseFloat(resp.lat)
         let lng = parseFloat(resp.lng)
         let codename = resp.cname
-        console.log("[lat:]"+lat+"[lng:]"+lng+"[codename:]"+codename)
+        let RoomID = resp.roomid
+        console.log("[lat:]"+lat+"[lng:]"+lng+"[codename:]"+codename+"[RoomID:]"+RoomID)
         // 既にマーカーが存在するか確認
         const displayed_codenames = displayedMarkers.map(marker => marker.title)
         if (!displayed_codenames.includes(codename)) {
@@ -286,7 +287,7 @@ function getNewMarker() {
             }
         }
         // 追加された要素を表示する?
-        infoElement.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} codename:${codename}`
+        infoElement.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} codename:${codename} RoomID:${RoomID}`
         infoElement.classList.remove('error')
         }
     xhr.send()

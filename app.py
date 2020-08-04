@@ -31,9 +31,11 @@ def sendLocation():
 	lat = datas["lat"]
 	lng = datas["lng"]
 	cname = datas["cname"]
+	RoomID = datas["roomid"]
 	print(cname)
 	print(lat)
 	print(lng)
+	print(RoomID)
 	return jsonify(datas)
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
