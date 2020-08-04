@@ -17,14 +17,16 @@
          <h2 class="title" id="demotext">Tag It サイバー鬼ごっこ</h2>
          <div class="value-props row">
            <div class="six columns value-prop">
-            <img class="value-img" src="static/images/wolf.png" style="width: 40%;height: 40%;">
-            <a class="button button-primary" href="/Oni" id="demotext" style="background-color: #000" >鬼側で参加</a>
+            <img class="value-img" src="static/images/host.svg" style="width: 50%;height: 50%;">
+            <button onclick="create()" class="button" id="demotext">
+              ルームを作成
+              </button>
            </div>
            <div class="six columns value-prop">
-             <img class="value-img" src="static/images/horse.png" style="width: 40%;height: 40%;">
-             <input placeholder="ニックネーム" type="text" id="hoge" style="background-color: #000;color:white;">
+             <img class="value-img" src="static/images/guest.svg" style="width: 50%;height: 50%;">
+             <input placeholder="ルームID" type="text" id="hoge" style="background-color: #000;color:white;">
              <button onclick="join()" class="button" id="demotext">
-              逃げ側で参加
+              ルームに参加
               </button>
            </div>
          </div>
@@ -48,14 +50,12 @@
   </div>
 </body>
 <script>
-RoomID = document.cookie;
-console.log(RoomID)
 const input = document.querySelector('input')
 const btn = document.getElementById('btn')
-let userName = '';
+let RoomID = '';
 input.addEventListener('input', function () {
   if(input.value.length > 0) {
-    userName = input.value;
+    RoomID = input.value;
     if(!btn.classList.contains('button-primary')){
       btn.classList.add("button-primary");
       btn.disabled = false;
@@ -68,8 +68,13 @@ input.addEventListener('input', function () {
   }
 })
 function join() {
-	document.cookie = "name=" + userName;
-	location.href = '/Nige';
+	document.cookie = "RoomID=" + RoomID;
+	location.href = '/Lobby';
+}
+function create(){
+  var ID = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+  console.log(ID);
+  document.cookie = "RoomID=" + ID;
 }
 </script>
 </html>

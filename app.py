@@ -6,6 +6,9 @@ CORS(app)
 cnames = []
 data = {}
 @app.route("/")
+def Room():
+	return render_template("Room/index.html")
+@app.route("/Lobby")
 def Lobby():
 	return render_template("Lobby/index.html")
 @app.route("/Nige")
