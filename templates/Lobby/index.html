@@ -48,8 +48,8 @@
   </div>
 </body>
 <script>
-cnamec = document.cookie;
-cnamed = cnamec.split('=');
+cookies = document.cookie.split(";");
+cookied = cookies.split('=');
 cname = cnamed[1]
 RoomID = cnamed[3]
 console.log(cname)
