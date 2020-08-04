@@ -39,7 +39,7 @@ def sendLocation(roomid):
 	print(cname)
 	print(lat)
 	print(lng)
-	if datas in d.values():
+	if datas in rooms:
 		rooms[roomid].update(datas)
 	else:
 		rooms.setdefault(roomid,datas)
