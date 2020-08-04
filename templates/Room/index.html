@@ -68,6 +68,7 @@ input.addEventListener('input', function () {
   }
 })
 function join() {
+  RoomID = input.value;
 	document.cookie = "RoomID=" + RoomID;
 	location.href = '/Lobby';
 }
