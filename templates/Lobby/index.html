@@ -49,7 +49,8 @@
 </body>
 <script>
 cookies = document.cookie.split(";");
-cookied = cookies.split('=');
+cnamed = cookies[0].split('=');
+RoomIDd = cookies[1].split('=');
 cname = cnamed[1]
 RoomID = cnamed[3]
 console.log(cname)
