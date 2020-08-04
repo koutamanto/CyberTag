@@ -5,7 +5,9 @@ app = Flask(__name__)
 CORS(app)
 cnames = []
 data = {}
-rooms = {}
+rooms = {
+	
+}
 @app.route("/")
 def Room():
 	return render_template("Room/index.html")
@@ -36,7 +38,7 @@ def sendLocation(roomid):
 	print(cname)
 	print(lat)
 	print(lng)
-	rooms[roomid] = rooms[roomid] + datas
+	rooms[roomid] = datas
 	print(rooms)
 	return jsonify(datas)
 if __name__ == '__main__':
