@@ -49,12 +49,9 @@
   </div>
 </body>
 <script>
-cookies = document.cookie.split(";");
-cnamed = cookies[0].split('=');
-RoomIDd = cookies[1].split('=');
-cname = cnamed[1]
+cookies = document.cookie;
+RoomIDd = cookies.split('=');
 RoomID = RoomIDd[1]
-console.log(cname)
 console.log(RoomID)
 h3 = document.getElementsByTagName('h3')
 h3[0].innerText = "ルームID:" + RoomID
@@ -76,7 +73,7 @@ input.addEventListener('input', function () {
   }
 })
 function join() {
-	document.cookie = "name=" + userName; + "RoomID=" + RoomID;
+	document.cookie = "name=" + userName + ";RoomID=" + RoomID;
 	location.href = '/Nige';
 }
 </script>
