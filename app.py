@@ -17,8 +17,8 @@ def Lobby():
 @app.route("/Nige")
 def Nige():
 	return render_template("Nige/index.html")
-@app.route("/Oni")
-def Oni():
+@app.route("/Oni/<int:roomid>")
+def Oni(roomid):
 	datas = rooms[roomid]
 	return render_template("Oni/index.html", datas=datas)
 @app.route("/getLocation/<int:roomid>", methods=["GET"])
