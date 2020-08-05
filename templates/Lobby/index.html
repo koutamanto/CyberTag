@@ -19,14 +19,12 @@
          <div class="value-props row">
            <div class="six columns value-prop">
             <img class="value-img" src="static/images/wolf.png" style="width: 40%;height: 40%;">
-            <a class="button button-primary" href="/Oni" id="demotext" style="background-color: #000" >鬼側で参加</a>
+            <a class="button button-primary" href="/Oni" id="demotextOni" style="background-color: #000" >鬼側で参加</a>
            </div>
            <div class="six columns value-prop">
              <img class="value-img" src="static/images/horse.png" style="width: 40%;height: 40%;">
              <input placeholder="ニックネーム" type="text" id="hoge" style="background-color: #000;color:white;">
-             <button onclick="join()" class="button" id="demotext">
-              逃げ側で参加
-              </button>
+             <a class="button button-primary" href="/Nige" id="demotext" style="background-color: #000" >逃げ側で参加</a>
            </div>
          </div>
       </section>
@@ -57,7 +55,7 @@ if(cookies.match(/;/)){
 console.log(RoomID)
 h3 = document.getElementsByTagName('h3')
 h3[0].innerText = "ルームID:" + RoomID
-Oni = document.getElementsByTagName('a')
+Oni = document.getElementById('demotextOni')
 Oni[0].href = "/Oni/" + RoomID
 const input = document.querySelector('input')
 const btn = document.getElementById('btn')
