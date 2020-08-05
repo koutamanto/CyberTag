@@ -4,6 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 cnames = []
+datas_list = []
 data = {}
 rooms = {
 	
@@ -39,10 +40,11 @@ def sendLocation(roomid):
 	print(cname)
 	print(lat)
 	print(lng)
+	datas_list.append(datas)
 	if roomid in rooms:
-		rooms[roomid].update(datas)
+		rooms[roomid].update(dataslist)
 	else:
-		rooms.setdefault(roomid,datas)
+		rooms.setdefault(roomid,dataslist)
 	print(rooms)
 	return jsonify(datas)
 if __name__ == '__main__':
