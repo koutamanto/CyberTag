@@ -40,7 +40,7 @@ def sendLocation(roomid):
 	print(cname)
 	print(lat)
 	print(lng)
-	datas_list.append(datas)
+	dataslist.append(datas)
 	if roomid in rooms:
 		rooms[roomid].update(dataslist)
 	else:
