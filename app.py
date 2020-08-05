@@ -42,7 +42,7 @@ def sendLocation(roomid):
 	print(lng)
 	dataslist.append(datas)
 	if roomid in rooms:
-		rooms[roomid].update(dataslist)
+		rooms[roomid] = dataslist
 	else:
 		rooms.setdefault(roomid,dataslist)
 	print(rooms)
