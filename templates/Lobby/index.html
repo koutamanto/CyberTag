@@ -52,6 +52,7 @@
 cookies = document.cookie.split(';');
 console.log(cookies)
 for(cookied of cookies){
+	console.log(cookied)
 	if(cookied[0]=="RoomID"){
 		RoomID = cookied.split('=')[1];
 		console.log(RoomID);		
