@@ -293,10 +293,10 @@ function init() {
     console.log(cookies)
     for(c of cookies){
       cArray = c.split('=');
-      if(cArray[0] == 'RoomID'){
+      if(cArray[0] == ' RoomID'){
         RoomID = cArray[1]
       }
-      if(cArray[0] == "name"){
+      if(cArray[0] == " name"){
         cname = cArray[1]
       }
     }

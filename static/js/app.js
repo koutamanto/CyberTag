@@ -241,13 +241,24 @@ let map = new google.maps.Map(
 let infoElement = document.getElementById('info')
 // 既に表示されているマーカー一覧
 let displayedMarkers = []
-RoomID = document.cookie.split(';')[0].split('=')[1];
+    cookies = document.cookie.split(";");
+    console.log(cookies)
+    for(c of cookies){
+      cArray = c.split('=');
+      if(cArray[0] == ' RoomID'){
+        RoomID = cArray[1]
+      }
+      if(cArray[0] == " cname"){
+        cname = cArray[1]
+      }
+    }
+
 
 // 5秒ごとに実行されるループ
 function getNewMarker() {
     // リクエスト
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/getLocation/'+RoomID);
+    xhr.open('GET', '/getLocation/'+ RoomID);
     xhr.onload = function () {
         // 応答の整形
         const row_resp = JSON.parse(xhr.responseText)
