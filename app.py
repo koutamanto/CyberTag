@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 cnames = []
-datas_list = []
+dataslist = []
 data = {}
 rooms = {
 	
