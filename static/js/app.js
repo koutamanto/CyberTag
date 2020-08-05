@@ -248,7 +248,7 @@ let displayedMarkers = []
       if(cArray[0] == ' RoomID'){
         RoomID = cArray[1]
       }
-      if(cArray[0] == " name"){
+      if(cArray[0] == " cname"){
         cname = cArray[1]
       }
     }
@@ -258,7 +258,7 @@ let displayedMarkers = []
 function getNewMarker() {
     // リクエスト
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/getLocation/'+RoomID);
+    xhr.open('GET', '/getLocation/'+ RoomID);
     xhr.onload = function () {
         // 応答の整形
         const resp = JSON.parse(xhr.responseText)
