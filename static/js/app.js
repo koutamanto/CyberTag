@@ -241,7 +241,18 @@ let map = new google.maps.Map(
 let infoElement = document.getElementById('info')
 // 既に表示されているマーカー一覧
 let displayedMarkers = []
-RoomID = document.cookie.split(';')[0].split('=')[1];
+    cookies = document.cookie.split(";");
+    console.log(cookies)
+    for(c of cookies){
+      cArray = c.split('=');
+      if(cArray[0] == ' RoomID'){
+        RoomID = cArray[1]
+      }
+      if(cArray[0] == " name"){
+        cname = cArray[1]
+      }
+    }
+
 
 // 5秒ごとに実行されるループ
 function getNewMarker() {
