@@ -60,7 +60,6 @@ for(a_cookie of cookies){
 
 	}
 }
-document.cookie = "name=" + userName + ";RoomID=" + RoomID + ";" + "path=/";
 h3 = document.getElementsByTagName('h3')
 h3[0].innerText = "ルームID:" + RoomID
 Oni = document.getElementsByTagName('a')
@@ -82,6 +81,7 @@ input.addEventListener('input', function () {
     }
   }
 })
+document.cookie = "name=" + userName + ";RoomID=" + RoomID + ";" + "path=/";
 function join() {
 	document.cookie = "name=" + userName + ";RoomID=" + RoomID + ";" + "path=/";
 	location.href = '/Nige';
