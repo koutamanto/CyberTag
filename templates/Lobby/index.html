@@ -51,7 +51,7 @@
 <script>
 cookies = document.cookie.split(';');
 console.log(cookies)
-RoomID = cookies.split('=')[1];
+RoomID = cookies[0].split('=')[1];
 console.log(RoomID)
 h3 = document.getElementsByTagName('h3')
 h3[0].innerText = "ルームID:" + RoomID
