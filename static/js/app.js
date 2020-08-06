@@ -288,7 +288,7 @@ function getNewMarker() {
         // 追加された要素を表示する?
         infoElement.textContent = `Lat: ${lat.toFixed(5)} Lng: ${lng.toFixed(5)} codename:${codename}`
         infoElement.classList.remove('error')
-        console.log(displayedMarkers)
+        console.log(displayed_codenames)
         }
     xhr.send()
     // 5秒ごとに実行させる
